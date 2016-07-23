@@ -65,6 +65,7 @@ class VideoPlayerViewController: UIViewController {
             authClient.getPlaylists(AuthorizedClient.SubsequentRequests.DeleteFavoriteVideo, playlistItemId: video?.playlistItemId) { (videosInfo, nextPageToken, prevPageToken, videoInfo, success, error) in
                 if (success != nil){
                     self.video?.isFavorite = false
+                    self.video?.user = nil
                     do{
                         try self.context.save()
                     }catch{}

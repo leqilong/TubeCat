@@ -25,6 +25,9 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        signInButton.center.x = self.view.center.x
+        signInButton.colorScheme = .Dark
+        signInButton.style = .Wide
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().clientID = "181815803767-ccuc13g9536f8orinon2q5p69k0ivn73.apps.googleusercontent.com"

@@ -340,16 +340,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zhh-vw-Ki6" customClass="GIDSignInButton">
-                                <rect key="frame" x="159" y="274" width="282" height="52"/>
+                                <rect key="frame" x="225.5" y="276" width="150" height="48"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="2tr-gR-o0X"/>
+                                    <constraint firstAttribute="height" constant="48" id="HWC-2e-g2q"/>
+                                </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign In With Google" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MG9-4U-7Bw">
+                                <rect key="frame" x="166" y="103" width="268" height="141"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="268" id="G3A-z2-z0V"/>
+                                    <constraint firstAttribute="height" constant="141" id="tYn-yz-kYj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="zhh-vw-Ki6" firstAttribute="top" secondItem="tpQ-Sl-Lwm" secondAttribute="bottom" constant="254" id="dVm-ha-gPd"/>
-                            <constraint firstItem="zhh-vw-Ki6" firstAttribute="centerX" secondItem="cfC-Lc-dbg" secondAttribute="centerX" id="jmz-rg-8I3"/>
-                            <constraint firstItem="zhh-vw-Ki6" firstAttribute="leading" secondItem="cfC-Lc-dbg" secondAttribute="leading" constant="159" id="mak-6f-YMQ"/>
-                            <constraint firstItem="zhh-vw-Ki6" firstAttribute="centerY" secondItem="cfC-Lc-dbg" secondAttribute="centerY" id="q1j-a4-iT0"/>
+                            <constraint firstItem="zhh-vw-Ki6" firstAttribute="centerX" secondItem="MG9-4U-7Bw" secondAttribute="centerX" id="4QM-gp-wOw"/>
+                            <constraint firstItem="zhh-vw-Ki6" firstAttribute="centerY" secondItem="cfC-Lc-dbg" secondAttribute="centerY" id="Gxb-pp-ESO"/>
+                            <constraint firstItem="zhh-vw-Ki6" firstAttribute="centerX" secondItem="cfC-Lc-dbg" secondAttribute="centerX" id="JqZ-xB-cU0"/>
+                            <constraint firstItem="MG9-4U-7Bw" firstAttribute="top" secondItem="tpQ-Sl-Lwm" secondAttribute="bottom" constant="83" id="mBs-nz-DyV"/>
                         </constraints>
                     </view>
                     <connections>
