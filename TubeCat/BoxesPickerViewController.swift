@@ -16,7 +16,7 @@ class BoxesPickerViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     var boxesData = [
         "Think Box",
-        "Look Box",
+        "Watch Box",
         "Love Box"
     ]
 

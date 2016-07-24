@@ -25,7 +25,8 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        signInButton.center.x = self.view.center.x
+        view.layer.contents = UIImage(named: "TubeCat.scnassets/Textures/stairs.jpg")?.CGImage
+        
         signInButton.colorScheme = .Dark
         signInButton.style = .Wide
         GIDSignIn.sharedInstance().delegate = self

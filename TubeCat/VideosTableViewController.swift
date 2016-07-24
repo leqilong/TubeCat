@@ -32,8 +32,6 @@ class VideosTableViewController: UITableViewController, NSFetchedResultsControll
         return fetchedResultsController
         
     }()
-    var nextPageToken: String?
-    var prevPageToken: String?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -62,6 +60,9 @@ class VideosTableViewController: UITableViewController, NSFetchedResultsControll
     func getVideos(category: Category, token: String?){
         
         category.loadedVideos = true
+        if let token = token{
+            category.currentPageToken = token
+        }
         
         youtubeClient.getVideosByCategory(category.id, token: token) { (videosInfo, nextPageToken, prevPageToken, error) in
             self.context.performBlock(){
@@ -78,17 +79,18 @@ class VideosTableViewController: UITableViewController, NSFetchedResultsControll
                         video.category = self.category
                 }
                 
+                if let nextPageToken = nextPageToken{
+                    self.category.nextPageToken = nextPageToken
+                }
+                
+                if let prevPageToken = prevPageToken{
+                    self.category.prePageToken = prevPageToken
+                }
+                
                 do{
                     try self.context.save()
                 }catch{}
                 
-                if let nextPageToken = nextPageToken{
-                    self.nextPageToken = nextPageToken
-                }
-                
-                if let prevPageToken = prevPageToken{
-                    self.prevPageToken = prevPageToken
-                }
             }else{
                 print(error?.localizedDescription)
             }
@@ -99,13 +101,13 @@ class VideosTableViewController: UITableViewController, NSFetchedResultsControll
     @IBAction func nextPagePressed(sender: AnyObject) {
         previousPageButton.enabled = true 
         prepareForNewPage()
-        getVideos(category!, token: nextPageToken)
+        getVideos(category!, token: category.nextPageToken)
     }
     
     
     @IBAction func previousPagePressed(sender: AnyObject) {
         prepareForNewPage()
-        getVideos(category!, token: prevPageToken)
+        getVideos(category!, token: category.prePageToken)
     }
     
     private func prepareForNewPage(){

@@ -31,6 +31,7 @@ class YouTubeClient: NSObject{
         }
         
         if let token = token{
+            print("Current page token from YouTubeClient.swift is \(token)")
             parameters[ParameterKeys.PageToken] = token
         }
         request.taskForAnyMethod(Methods.Search, paramaters: parameters, requestMethod: .GET) { (result, error) in

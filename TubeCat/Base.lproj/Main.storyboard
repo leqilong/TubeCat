@@ -396,7 +396,7 @@
     </scenes>
     <resources>
         <image name="boxIcon" width="42" height="42"/>
-        <image name="exploreIcon" width="36" height="36"/>
+        <image name="exploreIcon" width="42" height="42"/>
         <image name="heartIcon" width="71" height="80"/>
         <image name="heartItemIcon" width="71" height="61"/>
     </resources>

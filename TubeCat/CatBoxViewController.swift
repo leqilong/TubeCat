@@ -80,12 +80,12 @@ class CatBoxViewController: UIViewController, UIPopoverPresentationControllerDel
 
     
     var thinkBox = [CategoryInfo.Education, .Science, .Style, .Politics, .Nonprofit, .Animals]
-    var lookBox = [CategoryInfo.TVShows, .Movies, .Comedy, .Documentary, .Films, .Sports]
+    var watchBox = [CategoryInfo.TVShows, .Movies, .Comedy, .Documentary, .Films, .Sports]
     
     var loveBox = [CategoryInfo.Entertainment, .Gaming, .Music, .PeopleBlogs, .Auto, .Travel]
     
     var boxes: [[CategoryInfo]]{
-        return [thinkBox, lookBox, loveBox]
+        return [thinkBox, watchBox, loveBox]
     }
     
     var boxCategories = Array(count: 3, repeatedValue: [Category]())
