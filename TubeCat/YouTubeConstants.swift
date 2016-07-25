@@ -30,6 +30,7 @@ extension YouTubeClient{
         static let ResultsType = "type"
         static let Category = "videoCategoryId"
         static let PageToken = "pageToken"
+        static let ChannelId = "channelId"
     }
     
     struct ParameterValues{
@@ -37,6 +38,7 @@ extension YouTubeClient{
         static let Snippet = "snippet"
         static let NumberOfResults = 20  //Allows 0 - 50, default is 5
         static let VideosType = "video"
+        static let ChannelsType = "channel"
     }
     
     struct ResponseKeys{
@@ -46,6 +48,7 @@ extension YouTubeClient{
         static let Items = "items"
         static let ID = "id"
         static let VideoID = "videoId"
+        static let ChannelID = "channelId"
         static let Snippet = "snippet"
         static let Title = "title"
         static let Description = "description"

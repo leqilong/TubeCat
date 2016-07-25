@@ -56,49 +56,49 @@ class YouTubeClient: NSObject{
                     
                     var videoInfoDict = [String:AnyObject]()
                     
-                    guard let ids = video[YouTubeClient.ResponseKeys.ID] as? [String:AnyObject] else {
-                        print("Cannot find keys '\(YouTubeClient.ResponseKeys.ID)' in \(video)")
+                    guard let ids = video[ResponseKeys.ID] as? [String:AnyObject] else {
+                        print("Cannot find keys '\(ResponseKeys.ID)' in \(video)")
                         return
                     }
                     
-                    guard let videoId = ids[YouTubeClient.ResponseKeys.VideoID] as? String else {
-                        print("Cannot find keys '\(YouTubeClient.ResponseKeys.VideoID)' in \(ids)")
+                    guard let videoId = ids[ResponseKeys.VideoID] as? String else {
+                        print("Cannot find keys '\(ResponseKeys.VideoID)' in \(ids)")
                         return
                     }
                     
                     videoInfoDict[ResponseKeys.VideoID] = videoId
                     
-                    guard let snippet = video[YouTubeClient.ResponseKeys.Snippet] as? [String:AnyObject] else {
-                        print("Cannot find keys '\(YouTubeClient.ResponseKeys.Snippet)' in \(video)")
+                    guard let snippet = video[ResponseKeys.Snippet] as? [String:AnyObject] else {
+                        print("Cannot find keys '\(ResponseKeys.Snippet)' in \(video)")
                         return
                     }
                     
-                    guard let title = snippet[YouTubeClient.ResponseKeys.Title] as? String else {
-                        print("Cannot find keys '\(YouTubeClient.ResponseKeys.Title)' in \(snippet)")
+                    guard let title = snippet[ResponseKeys.Title] as? String else {
+                        print("Cannot find keys '\(ResponseKeys.Title)' in \(snippet)")
                         return
                     }
                     
                     videoInfoDict[ResponseKeys.Title] = title
                     
-                    guard let description = snippet[YouTubeClient.ResponseKeys.Description] as? String else {
-                        print("Cannot find keys '\(YouTubeClient.ResponseKeys.Description)' in \(snippet)")
+                    guard let description = snippet[ResponseKeys.Description] as? String else {
+                        print("Cannot find keys '\(ResponseKeys.Description)' in \(snippet)")
                         return
                     }
                     
                     videoInfoDict[ResponseKeys.Description] = description
                     
-                    guard let thumbnailsDict = snippet[YouTubeClient.ResponseKeys.Thumbnail] as? [String:AnyObject] else {
-                        print("Cannot find keys '\(YouTubeClient.ResponseKeys.Thumbnail)' in \(snippet)")
+                    guard let thumbnailsDict = snippet[ResponseKeys.Thumbnail] as? [String:AnyObject] else {
+                        print("Cannot find keys '\(ResponseKeys.Thumbnail)' in \(snippet)")
                         return
                     }
                     
-                    guard let medResThumbnailDict = thumbnailsDict[YouTubeClient.ResponseKeys.MedResThumbnail] as? [String:AnyObject] else {
-                        print("Cannot find keys '\(YouTubeClient.ResponseKeys.MedResThumbnail)' in \(thumbnailsDict)")
+                    guard let medResThumbnailDict = thumbnailsDict[ResponseKeys.MedResThumbnail] as? [String:AnyObject] else {
+                        print("Cannot find keys '\(ResponseKeys.MedResThumbnail)' in \(thumbnailsDict)")
                         return
                     }
                     
-                    guard let url = medResThumbnailDict[YouTubeClient.ResponseKeys.ThumbnailURL] as? String else {
-                        print("Cannot find keys '\(YouTubeClient.ResponseKeys.ThumbnailURL)' in \(medResThumbnailDict)")
+                    guard let url = medResThumbnailDict[ResponseKeys.ThumbnailURL] as? String else {
+                        print("Cannot find keys '\(ResponseKeys.ThumbnailURL)' in \(medResThumbnailDict)")
                         return
                     }
                     
@@ -119,6 +119,131 @@ class YouTubeClient: NSObject{
                 completionHandler(videosInfo: nil, nextPageToken: nil, prevPageToken: nil, error: error)
             }
         }
+    }
+    
+    
+    func searchByKeywords(keywords: String?, resultType: String?, channelId: String? = nil, token: String?, completionHandler: (resultsInfo: [[String:AnyObject]]?, nextPageToken: String?, prevPageToken: String?, error: NSError?) -> Void){
+        var parameters = [String:AnyObject]()
+        if let keywords = keywords,
+            let resultType = resultType{
+            parameters = [
+                ParameterKeys.Part: ParameterValues.Snippet,
+                ParameterKeys.ResultsType: resultType,
+                ParameterKeys.SearchTerm: keywords,
+                ParameterKeys.MaxResults: 50,
+                ParameterKeys.APIKey: ParameterValues.APIKey
+            ]
+        }
+        
+        if let channelId = channelId,
+            let resultType = resultType{
+            parameters = [
+                ParameterKeys.Part: ParameterValues.Snippet,
+                ParameterKeys.ResultsType: resultType,
+                ParameterKeys.MaxResults: 50,
+                ParameterKeys.ChannelId: channelId,
+                ParameterKeys.APIKey: ParameterValues.APIKey
+            ]
+        }
+        
+        if let token = token{
+            print("Current page token from YouTubeClient.swift is \(token)")
+            parameters[ParameterKeys.PageToken] = token
+        }
+        
+        request.taskForAnyMethod(Methods.Search, paramaters: parameters, requestMethod: .GET) { (result, error) in
+            if let result = result{
+                let parsedResult = try! NSJSONSerialization.JSONObjectWithData(result, options: .AllowFragments) as! [String:AnyObject]
+                var desiredResultsInfo = [[String:AnyObject]]()
+
+                /* GUARD: Is "items" key in our result? */
+                guard let resultsArray = parsedResult[ResponseKeys.Items] as? [[String:AnyObject]] else {
+                    self.displayError("Cannot find keys '\(ResponseKeys.Items)' in \(parsedResult)")
+                    return
+                }
+                
+                for result in resultsArray{
+                    
+                    var resultInfoDict = [String:AnyObject]()
+                    
+                    guard let ids = result[ResponseKeys.ID] as? [String:AnyObject] else {
+                        print("Cannot find keys '\(ResponseKeys.ID)' in \(result)")
+                        return
+                    }
+
+                    if resultType == ParameterValues.VideosType{
+                        guard let videoId = ids[ResponseKeys.VideoID] as? String else {
+                            print("Cannot find keys '\(ResponseKeys.VideoID)' in \(ids)")
+                            return
+                        }
+                        
+                        resultInfoDict[ResponseKeys.VideoID] = videoId
+                    }else{
+                        guard let channelId = ids[ResponseKeys.ChannelID] as? String else {
+                            print("Cannot find keys '\(ResponseKeys.ChannelID)' in \(ids)")
+                            return
+                        }
+                        
+                        resultInfoDict[ResponseKeys.ChannelID] = channelId
+                    }
+                    
+                    guard let snippet = result[ResponseKeys.Snippet] as? [String:AnyObject] else {
+                        print("Cannot find keys '\(ResponseKeys.Snippet)' in \(result)")
+                        return
+                    }
+                    
+                    guard let title = snippet[ResponseKeys.Title] as? String else {
+                        print("Cannot find keys '\(ResponseKeys.Title)' in \(snippet)")
+                        return
+                    }
+                    
+                    resultInfoDict[ResponseKeys.Title] = title
+                    
+                    guard let description = snippet[ResponseKeys.Description] as? String else {
+                        print("Cannot find keys '\(ResponseKeys.Description)' in \(snippet)")
+                        return
+                    }
+                    
+                    resultInfoDict[ResponseKeys.Description] = description
+                    
+                    guard let thumbnailsDict = snippet[ResponseKeys.Thumbnail] as? [String:AnyObject] else {
+                        print("Cannot find keys '\(ResponseKeys.Thumbnail)' in \(snippet)")
+                        return
+                    }
+                    
+                    guard let medResThumbnailDict = thumbnailsDict[ResponseKeys.MedResThumbnail] as? [String:AnyObject] else {
+                        print("Cannot find keys '\(ResponseKeys.MedResThumbnail)' in \(thumbnailsDict)")
+                        return
+                    }
+                    
+                    guard let url = medResThumbnailDict[ResponseKeys.ThumbnailURL] as? String else {
+                        print("Cannot find keys '\(ResponseKeys.ThumbnailURL)' in \(medResThumbnailDict)")
+                        return
+                    }
+                    
+                    resultInfoDict[ResponseKeys.ThumbnailURL] = url
+                    
+                    desiredResultsInfo.append(resultInfoDict)
+                }
+                
+                if let nextPageToken = parsedResult[ResponseKeys.NextPageToken] as? String,
+                    let prevPageToken = parsedResult[ResponseKeys.PrePageToken] as? String{
+                    completionHandler(resultsInfo: desiredResultsInfo, nextPageToken: nextPageToken, prevPageToken: prevPageToken, error: nil)
+                }else if let nextPageToken = parsedResult[ResponseKeys.NextPageToken] as? String{
+                    completionHandler(resultsInfo: desiredResultsInfo, nextPageToken: nextPageToken, prevPageToken: nil, error: nil)
+                }else if let prevPageToken = parsedResult[ResponseKeys.PrePageToken] as? String{
+                    completionHandler(resultsInfo: desiredResultsInfo, nextPageToken: nil, prevPageToken:prevPageToken, error: nil)
+                }else{
+                    completionHandler(resultsInfo: desiredResultsInfo, nextPageToken: nil, prevPageToken: nil, error: nil)
+                }
+            }else{
+                print(error?.localizedDescription)
+                completionHandler(resultsInfo: nil, nextPageToken: nil, prevPageToken: nil, error: error)
+            }
+        }
+        
+        
+
     }
     
     //MARK: Singleton

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1000BA361D44DE7D001A6C20 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1000BA351D44DE7D001A6C20 /* SearchViewController.swift */; };
 		10027BC01D3453CD002B05AC /* CatBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10027BBF1D3453CD002B05AC /* CatBoxViewController.swift */; };
 		10027BC21D34545D002B05AC /* TubeCat.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 10027BC11D34545D002B05AC /* TubeCat.scnassets */; };
 		100B3BDC1D3F862500F29222 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B3BDB1D3F862500F29222 /* FavoritesTableViewController.swift */; };
@@ -70,6 +71,7 @@
 
 /* Begin PBXFileReference section */
 		091125A278A171322C8427C1 /* Pods-TubeCatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TubeCatTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TubeCatTests/Pods-TubeCatTests.debug.xcconfig"; sourceTree = "<group>"; };
+		1000BA351D44DE7D001A6C20 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		10027BBF1D3453CD002B05AC /* CatBoxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatBoxViewController.swift; sourceTree = "<group>"; };
 		10027BC11D34545D002B05AC /* TubeCat.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = TubeCat.scnassets; sourceTree = "<group>"; };
 		100B3BDB1D3F862500F29222 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 		10FDF9901D3203020002D770 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1000BA351D44DE7D001A6C20 /* SearchViewController.swift */,
 				100B3BDD1D3F865100F29222 /* FavoritesTableViewCell.swift */,
 				100B3BDB1D3F862500F29222 /* FavoritesTableViewController.swift */,
 				101652ED1D3DAA1000BEB15D /* LoginViewController.swift */,
@@ -586,6 +589,7 @@
 				100B3BDE1D3F865100F29222 /* FavoritesTableViewCell.swift in Sources */,
 				10F9123F1D3E25D600D8EFA1 /* YouTubeiOSPlayerHelper.h in Sources */,
 				10F9123E1D3E25CF00D8EFA1 /* YTPlayerView.h in Sources */,
+				1000BA361D44DE7D001A6C20 /* SearchViewController.swift in Sources */,
 				102E40F21D3EEEB100A6983F /* AuthorizedConstants.swift in Sources */,
 				100B3BDC1D3F862500F29222 /* FavoritesTableViewController.swift in Sources */,
 				102E41041D3F6D8900A6983F /* Video+CoreDataProperties.swift in Sources */,

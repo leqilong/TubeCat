@@ -79,10 +79,11 @@ class CatBoxViewController: UIViewController, UIPopoverPresentationControllerDel
     
 
     
-    var thinkBox = [CategoryInfo.Education, .Science, .Style, .Politics, .Nonprofit, .Animals]
-    var watchBox = [CategoryInfo.TVShows, .Movies, .Comedy, .Documentary, .Films, .Sports]
+    var thinkBox = [CategoryInfo.Animals, .Politics, .Style, .Education, .Science, .Nonprofit]
     
-    var loveBox = [CategoryInfo.Entertainment, .Gaming, .Music, .PeopleBlogs, .Auto, .Travel]
+    var watchBox = [CategoryInfo.Films, .Sports, .Comedy, .Movies, .Documentary, .TVShows]
+    
+    var loveBox = [CategoryInfo.Auto, .Music, .Travel, .Gaming, .PeopleBlogs, .Entertainment]
     
     var boxes: [[CategoryInfo]]{
         return [thinkBox, watchBox, loveBox]
@@ -108,7 +109,6 @@ class CatBoxViewController: UIViewController, UIPopoverPresentationControllerDel
     }
     private let youtubeClient = YouTubeClient.sharedClient()
     var nextPageToken: String?
-    var categoryId: String?
     
     var geometries = [SCNBox(width: 2.0, height: 2.0, length: 2.0, chamferRadius: 0.0),
                       SCNBox(width: 2.0, height: 2.0, length: 2.0, chamferRadius: 0.0),
@@ -122,13 +122,8 @@ class CatBoxViewController: UIViewController, UIPopoverPresentationControllerDel
         setupView()
         setupScene()
         setupCamera()
-        //showBox()
+    
         setupBox(0)
-//        if boxes[0].count == 0{
-//             createCategories(0)
-//        }else{
-//            loadCategories(0)
-//        }
     }
     
     enum CubeFace: Int {
@@ -225,18 +220,7 @@ class CatBoxViewController: UIViewController, UIPopoverPresentationControllerDel
             
             boxNode.pivot = SCNMatrix4MakeRotation(Float(M_PI_2), 1, 0, 0)
         
-        if let currentBoxIndex = currentBoxIndex{
-            //print("currentBoxIndex is now: \(currentBoxIndex)")
-            if boxCategories[currentBoxIndex].isEmpty{
-                print("About to create new categories")
-                createCategories(currentBoxIndex)
-            }else{
-                print("About to fetch existing categories")
-                loadCategories(currentBoxIndex)
-            }
-        }
-
-            scnScene.rootNode.addChildNode(boxNode)
+             scnScene.rootNode.addChildNode(boxNode)
         
     }
     
@@ -246,44 +230,47 @@ class CatBoxViewController: UIViewController, UIPopoverPresentationControllerDel
         for i in 0..<6{
             let material = SCNMaterial()
             material.diffuse.contents = box[i].url
+            print("index \(i) has image \(box[i].url)")
             materials.append(material)
         }
         
         return materials
     }
-    
-    
-    func createCategories(index: Int?){
-        
-        var categoryArray = [Category]()
-        
-        if let index = index{
-            //print("index is \(index)")
-            for i in 0..<6{
-                let cat = boxes[index][i].category
-                categoryArray.append(cat)
-            }
-            
-            boxCategories[index] = categoryArray
-            
-            do{
-                try context.save()
-            }catch{}
-        }
-    }
-    
-    func loadCategories(index: Int?){
-        let fr = NSFetchRequest(entityName: "Category")
-        if let index = index{
-            do{
-                boxCategories[index] = try context.executeFetchRequest(fr) as! [Category]
-            }catch let e as NSError{
-                print("Error in fetchrequest: \(e)")
-                boxCategories[index] = [Category]()
-            }
-
-        }
-    }
+//    
+//    
+//    func createCategories(index: Int?){
+//        
+//        print("About to create new categories!")
+//        //var categoryArray = [Category]()
+//        
+//        if let index = index{
+//            //print("index is \(index)")
+//            for i in 0..<6{
+//                let cat = boxes[index][i].category
+//                boxCategories[index].append(cat)
+//            }
+//            //boxCategories[index] = categoryArray
+//            
+//            do{
+//                try context.save()
+//            }catch{}
+//        }
+//    }
+//    
+//    func loadCategories(index: Int?){
+//        print("About to fetch existing categories!")
+//        let fr = NSFetchRequest(entityName: "Category")
+//        if let index = index{
+//            do{
+//                boxCategories[index] = try context.executeFetchRequest(fr) as! [Category]
+//            }catch let e as NSError{
+//                print("Error in fetchrequest: \(e)")
+//                boxCategories[index] = [Category]()
+//                createCategories(index)
+//            }
+//
+//        }
+//    }
     
     @IBAction func boxFaceTapped(sender: UITapGestureRecognizer) {
         let location = sender.locationInView(scnView)
@@ -293,32 +280,63 @@ class CatBoxViewController: UIViewController, UIPopoverPresentationControllerDel
             
             _ = node.geometry!.materials[result.geometryIndex]
             
-            switch (result.geometryIndex) {
-            case 0:
-                categoryId = boxes[currentBoxIndex!][0].category.id
-            case 1:
-                categoryId = boxes[currentBoxIndex!][1].category.id
-            case 2:
-                categoryId = boxes[currentBoxIndex!][2].category.id
-            case 3:
-                categoryId = boxes[currentBoxIndex!][3].category.id
-            case 4:
-                categoryId = boxes[currentBoxIndex!][4].category.id
-            case 5:
-                categoryId = boxes[currentBoxIndex!][5].category.id
-            default:
-                break
-            }
+            print("geometryIndex is \(result.geometryIndex)")
             
             print("segue is about to start")
+            let fr = NSFetchRequest(entityName: "Category")
+            
+            do{
+                print("Will try to fetch existing categories")
+                boxCategories[currentBoxIndex!] = try context.executeFetchRequest(fr) as! [Category]
+            }catch let e as NSError{
+                print("Error in fetchrequest: \(e)")
+                boxCategories[currentBoxIndex!] = [Category]()
+            }
+
+            if boxCategories[currentBoxIndex!].isEmpty{
+                print("About to create new categories for currentBoxIndex \(currentBoxIndex)!")
+                for i in 0..<6{
+                    let cat = boxes[currentBoxIndex!][i].category
+                    print("category id for index \(i) is \(boxes[currentBoxIndex!][i].category.id)")
+                    boxCategories[currentBoxIndex!].append(cat)
+                }
+                
+                do{
+                    try context.save()
+                }catch{}
+            }
+            
+            var categoryId: String?
+            switch (result.geometryIndex) {
+                case 0:
+                    categoryId = boxes[currentBoxIndex!][0].category.id
+                case 1:
+                    categoryId = boxes[currentBoxIndex!][1].category.id
+                case 2:
+                    categoryId = boxes[currentBoxIndex!][2].category.id
+                case 3:
+                    categoryId = boxes[currentBoxIndex!][3].category.id
+                case 4:
+                    categoryId = boxes[currentBoxIndex!][4].category.id
+                case 5:
+                    categoryId = boxes[currentBoxIndex!][5].category.id
+                default:
+                    break
+             }
+            
             let videosTableVC = storyboard!.instantiateViewControllerWithIdentifier("videosTable") as! VideosTableViewController
+
             for cat in boxCategories[currentBoxIndex!]{
                 if cat.id == categoryId{
-                    print("cat.id is \(cat.id) and categoryId is \(categoryId)")
-                    videosTableVC.category = cat
-                    break
+                    print("cat.id is \(cat.id) and categoryId is (categoryId)")
+                        videosTableVC.category = cat
+                        break
                 }
             }
+            
+            
+            print("About to segue to new videosVC. The category ID is \(boxCategories[currentBoxIndex!][result.geometryIndex].id)!!!")
+            
 
            self.navigationController?.pushViewController(videosTableVC, animated: true)
            print("hit face: \(CubeFace(rawValue: result.geometryIndex))")
