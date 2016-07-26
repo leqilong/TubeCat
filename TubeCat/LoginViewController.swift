@@ -71,7 +71,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
             if dataSource.user == nil{
                 //Create a new user
                 print("Creating a new user!")
-                let currentUser = User(id: user.userID, context: self.context) // For client-side use only!
+                let currentUser = User(id: user.userID, context: context) // For client-side use only!
                 currentUser.authToken = user.authentication.idToken // Safe to send to the server
                 currentUser.firstName = user.profile.name
                 currentUser.lastName = user.profile.familyName

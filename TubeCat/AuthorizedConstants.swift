@@ -39,7 +39,7 @@ extension AuthorizedClient{
         static let ContentDetails = "contentDetails"
         static let Status = "status"
         static let Mine = "true"
-        static let MaxResults = 20
+        static let MaxResults = 40
     }
     
     struct ResponseKeys{

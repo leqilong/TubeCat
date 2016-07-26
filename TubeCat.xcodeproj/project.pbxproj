@@ -10,20 +10,20 @@
 		1000BA361D44DE7D001A6C20 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1000BA351D44DE7D001A6C20 /* SearchViewController.swift */; };
 		1000BA381D463ECE001A6C20 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1000BA371D463ECE001A6C20 /* ProfileViewController.swift */; };
 		1000BA3A1D46B70B001A6C20 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1000BA391D46B70B001A6C20 /* UIImageExtension.swift */; };
+		1000BA3D1D476402001A6C20 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1000BA3C1D476402001A6C20 /* User.swift */; };
+		1000BA3F1D476409001A6C20 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1000BA3E1D476409001A6C20 /* User+CoreDataProperties.swift */; };
+		1000BA421D477D56001A6C20 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1000BA411D477D56001A6C20 /* Category.swift */; };
+		1000BA441D477D60001A6C20 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1000BA431D477D60001A6C20 /* Category+CoreDataProperties.swift */; };
 		10027BC01D3453CD002B05AC /* CatBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10027BBF1D3453CD002B05AC /* CatBoxViewController.swift */; };
 		10027BC21D34545D002B05AC /* TubeCat.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 10027BC11D34545D002B05AC /* TubeCat.scnassets */; };
 		100B3BDC1D3F862500F29222 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B3BDB1D3F862500F29222 /* FavoritesTableViewController.swift */; };
 		100B3BDE1D3F865100F29222 /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B3BDD1D3F865100F29222 /* FavoritesTableViewCell.swift */; };
-		101238A71D3F8EEA00F8E0A3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101238A61D3F8EEA00F8E0A3 /* User.swift */; };
-		101238A91D3F8EF100F8E0A3 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101238A81D3F8EF100F8E0A3 /* User+CoreDataProperties.swift */; };
 		101652EE1D3DAA1000BEB15D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101652ED1D3DAA1000BEB15D /* LoginViewController.swift */; };
 		101652FD1D3E096B00BEB15D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 101652FC1D3E096B00BEB15D /* SystemConfiguration.framework */; };
 		101652FF1D3E097700BEB15D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 101652FE1D3E097700BEB15D /* StoreKit.framework */; };
 		101653011D3E098100BEB15D /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 101653001D3E098100BEB15D /* AddressBook.framework */; };
 		102E40F01D3EEEA300A6983F /* AuthorizedClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102E40EF1D3EEEA300A6983F /* AuthorizedClient.swift */; };
 		102E40F21D3EEEB100A6983F /* AuthorizedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102E40F11D3EEEB100A6983F /* AuthorizedConstants.swift */; };
-		102E40F91D3F60A100A6983F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102E40F61D3F60A100A6983F /* Category.swift */; };
-		102E40FF1D3F60BC00A6983F /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102E40FC1D3F60BC00A6983F /* Category+CoreDataProperties.swift */; };
 		102E41021D3F6D7F00A6983F /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102E41011D3F6D7F00A6983F /* Video.swift */; };
 		102E41041D3F6D8900A6983F /* Video+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102E41031D3F6D8900A6983F /* Video+CoreDataProperties.swift */; };
 		102EACD21D34E8CF00E06EB0 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 102EACD01D34E8CF00E06EB0 /* Model.xcdatamodeld */; };
@@ -76,13 +76,17 @@
 		1000BA351D44DE7D001A6C20 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		1000BA371D463ECE001A6C20 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1000BA391D46B70B001A6C20 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		1000BA3B1D4763D2001A6C20 /* Model 8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 8.xcdatamodel"; sourceTree = "<group>"; };
+		1000BA3C1D476402001A6C20 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1000BA3E1D476409001A6C20 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		1000BA401D477D16001A6C20 /* Model 9.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 9.xcdatamodel"; sourceTree = "<group>"; };
+		1000BA411D477D56001A6C20 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		1000BA431D477D60001A6C20 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		10027BBF1D3453CD002B05AC /* CatBoxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatBoxViewController.swift; sourceTree = "<group>"; };
 		10027BC11D34545D002B05AC /* TubeCat.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = TubeCat.scnassets; sourceTree = "<group>"; };
 		100B3BDB1D3F862500F29222 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
 		100B3BDD1D3F865100F29222 /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
 		101238A51D3F8E8100F8E0A3 /* Model 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 7.xcdatamodel"; sourceTree = "<group>"; };
-		101238A61D3F8EEA00F8E0A3 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		101238A81D3F8EF100F8E0A3 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		101652ED1D3DAA1000BEB15D /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		101652FC1D3E096B00BEB15D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		101652FE1D3E097700BEB15D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -91,8 +95,6 @@
 		102E40EF1D3EEEA300A6983F /* AuthorizedClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizedClient.swift; sourceTree = "<group>"; };
 		102E40F11D3EEEB100A6983F /* AuthorizedConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizedConstants.swift; sourceTree = "<group>"; };
 		102E40F31D3F607100A6983F /* Model 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 5.xcdatamodel"; sourceTree = "<group>"; };
-		102E40F61D3F60A100A6983F /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
-		102E40FC1D3F60BC00A6983F /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		102E41001D3F6D3F00A6983F /* Model 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 6.xcdatamodel"; sourceTree = "<group>"; };
 		102E41011D3F6D7F00A6983F /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		102E41031D3F6D8900A6983F /* Video+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Video+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -181,9 +183,9 @@
 		102EACE71D34ECE900E06EB0 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				1000BA411D477D56001A6C20 /* Category.swift */,
 				102E41011D3F6D7F00A6983F /* Video.swift */,
-				101238A61D3F8EEA00F8E0A3 /* User.swift */,
-				102E40F61D3F60A100A6983F /* Category.swift */,
+				1000BA3C1D476402001A6C20 /* User.swift */,
 				102EACD01D34E8CF00E06EB0 /* Model.xcdatamodeld */,
 				102EACE81D34EFF900E06EB0 /* CoreDataStack.swift */,
 			);
@@ -247,10 +249,10 @@
 		10FDF98D1D3202AE0002D770 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1000BA431D477D60001A6C20 /* Category+CoreDataProperties.swift */,
 				1000BA391D46B70B001A6C20 /* UIImageExtension.swift */,
-				101238A81D3F8EF100F8E0A3 /* User+CoreDataProperties.swift */,
+				1000BA3E1D476409001A6C20 /* User+CoreDataProperties.swift */,
 				102E41031D3F6D8900A6983F /* Video+CoreDataProperties.swift */,
-				102E40FC1D3F60BC00A6983F /* Category+CoreDataProperties.swift */,
 				10FDF95F1D310B360002D770 /* AppDelegate.swift */,
 				10B542E11D3CBC4E003B89F1 /* Assets.bundle */,
 				10B542DD1D3CBB90003B89F1 /* YTPlayerView.h */,
@@ -601,7 +603,6 @@
 				102E41041D3F6D8900A6983F /* Video+CoreDataProperties.swift in Sources */,
 				10FDF99A1D3204510002D770 /* YouTubeConstants.swift in Sources */,
 				10FDF9601D310B360002D770 /* AppDelegate.swift in Sources */,
-				101238A91D3F8EF100F8E0A3 /* User+CoreDataProperties.swift in Sources */,
 				10F66EBE1D3B3235002E3EAE /* BoxesPickerViewController.swift in Sources */,
 				10FDF9941D3204010002D770 /* Request.swift in Sources */,
 				10CBEA771D42D59B00A74BEB /* DataSource .swift in Sources */,
@@ -613,14 +614,15 @@
 				1000BA381D463ECE001A6C20 /* ProfileViewController.swift in Sources */,
 				1000BA3A1D46B70B001A6C20 /* UIImageExtension.swift in Sources */,
 				102EACD21D34E8CF00E06EB0 /* Model.xcdatamodeld in Sources */,
+				1000BA3D1D476402001A6C20 /* User.swift in Sources */,
 				10F66EC71D3C655F002E3EAE /* VideoPlayerViewController.swift in Sources */,
-				102E40FF1D3F60BC00A6983F /* Category+CoreDataProperties.swift in Sources */,
+				1000BA3F1D476409001A6C20 /* User+CoreDataProperties.swift in Sources */,
 				10027BC01D3453CD002B05AC /* CatBoxViewController.swift in Sources */,
+				1000BA441D477D60001A6C20 /* Category+CoreDataProperties.swift in Sources */,
 				101652EE1D3DAA1000BEB15D /* LoginViewController.swift in Sources */,
-				101238A71D3F8EEA00F8E0A3 /* User.swift in Sources */,
 				10B542DF1D3CBB90003B89F1 /* YTPlayerView.m in Sources */,
 				10FDF99C1D3227EC0002D770 /* VideoTableViewCell.swift in Sources */,
-				102E40F91D3F60A100A6983F /* Category.swift in Sources */,
+				1000BA421D477D56001A6C20 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -905,6 +907,8 @@
 		102EACD01D34E8CF00E06EB0 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				1000BA401D477D16001A6C20 /* Model 9.xcdatamodel */,
+				1000BA3B1D4763D2001A6C20 /* Model 8.xcdatamodel */,
 				101238A51D3F8E8100F8E0A3 /* Model 7.xcdatamodel */,
 				102E41001D3F6D3F00A6983F /* Model 6.xcdatamodel */,
 				102E40F31D3F607100A6983F /* Model 5.xcdatamodel */,
@@ -913,7 +917,7 @@
 				10AC93FF1D379C0D00D63EEB /* Model 2.xcdatamodel */,
 				102EACD11D34E8CF00E06EB0 /* Model.xcdatamodel */,
 			);
-			currentVersion = 101238A51D3F8E8100F8E0A3 /* Model 7.xcdatamodel */;
+			currentVersion = 1000BA401D477D16001A6C20 /* Model 9.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

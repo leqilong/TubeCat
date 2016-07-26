@@ -243,6 +243,7 @@ class CatBoxViewController: UIViewController, UIPopoverPresentationControllerDel
             
             print("segue is about to start")
             let fr = NSFetchRequest(entityName: "Category")
+            fr.predicate = NSPredicate(format: "boxIndex == \(currentBoxIndex!)")
             
             do{
                 print("Will try to fetch existing categories")
@@ -256,6 +257,7 @@ class CatBoxViewController: UIViewController, UIPopoverPresentationControllerDel
                 print("About to create new categories for currentBoxIndex \(currentBoxIndex)!")
                 for i in 0..<6{
                     let cat = boxes[currentBoxIndex!][i].category
+                    cat.boxIndex = currentBoxIndex
                     print("category id for index \(i) is \(boxes[currentBoxIndex!][i].category.id)")
                     boxCategories[currentBoxIndex!].append(cat)
                 }
@@ -292,10 +294,6 @@ class CatBoxViewController: UIViewController, UIPopoverPresentationControllerDel
                         break
                 }
             }
-            
-            
-            print("About to segue to new videosVC. The category ID is \(boxCategories[currentBoxIndex!][result.geometryIndex].id)!!!")
-            
 
            self.navigationController?.pushViewController(videosTableVC, animated: true)
            print("hit face: \(CubeFace(rawValue: result.geometryIndex))")

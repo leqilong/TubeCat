@@ -2,7 +2,7 @@
 //  Category.swift
 //  
 //
-//  Created by Leqi Long on 7/20/16.
+//  Created by Leqi Long on 7/26/16.
 //
 //
 
@@ -21,6 +21,5 @@ class Category: NSManagedObject {
             fatalError("Unable to find entity name!")
         }
     }
-
 
 }

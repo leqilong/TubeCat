@@ -2,7 +2,7 @@
 //  User.swift
 //  
 //
-//  Created by Leqi Long on 7/20/16.
+//  Created by Leqi Long on 7/26/16.
 //
 //
 
@@ -11,7 +11,7 @@ import CoreData
 
 
 class User: NSManagedObject {
-    
+
     convenience init(id: String, context: NSManagedObjectContext){
         if let ent = NSEntityDescription.entityForName("User", inManagedObjectContext: context){
             self.init(entity: ent, insertIntoManagedObjectContext: context)
@@ -21,5 +21,6 @@ class User: NSManagedObject {
             fatalError("Unable to find entity name!")
         }
     }
+
 
 }

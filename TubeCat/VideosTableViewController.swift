@@ -46,6 +46,15 @@ class VideosTableViewController: UITableViewController, NSFetchedResultsControll
         if (category.loadedVideos == false){
             getVideos(category!, token: nil)
         }
+        
+        if category.prePageToken == nil{
+            previousPageButton.enabled = false
+        }
+        
+        if category.nextPageToken == nil{
+            nextPageButton.enabled = false
+        }
+        
         executeSearch()
         tableView.reloadData()
 
@@ -81,10 +90,18 @@ class VideosTableViewController: UITableViewController, NSFetchedResultsControll
                 
                 if let nextPageToken = nextPageToken{
                     self.category.nextPageToken = nextPageToken
+                    self.nextPageButton.enabled = true
+                }else{
+                    self.category.nextPageToken = nil
+                    self.nextPageButton.enabled = false
                 }
                 
                 if let prevPageToken = prevPageToken{
                     self.category.prePageToken = prevPageToken
+                    self.previousPageButton.enabled = true
+                }else{
+                     self.category.prePageToken = nil
+                     self.previousPageButton.enabled = false
                 }
                 
                 do{
@@ -106,8 +123,15 @@ class VideosTableViewController: UITableViewController, NSFetchedResultsControll
     
     
     @IBAction func previousPagePressed(sender: AnyObject) {
+        nextPageButton.enabled = true
         prepareForNewPage()
         getVideos(category!, token: category.prePageToken)
+    }
+
+    
+    @IBAction func refresh(sender: AnyObject) {
+        prepareForNewPage()
+        getVideos(category!, token: nil)
     }
     
     private func prepareForNewPage(){

@@ -36,7 +36,7 @@ class VideoPlayerViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         if let video = video{
-            authClient.getPlaylists(AuthorizedClient.SubsequentRequests.GetFavoriteVideos){ (videosInfo, nextPageToken, prevPageToken, videoInfo, success, error) in
+            authClient.getPlaylists(AuthorizedClient.SubsequentRequests.GetFavoriteVideos, token: nil){ (videosInfo, nextPageToken, prevPageToken, videoInfo, success, error) in
                 self.isFavorite = false
                 if let videosInfo = videosInfo{
                     for video in videosInfo{
@@ -69,7 +69,7 @@ class VideoPlayerViewController: UIViewController {
         if isFavorite{
             self.isFavorite = false
             print("isFavorite is \(isFavorite), so we're going to DELETE the video.")
-            authClient.getPlaylists(AuthorizedClient.SubsequentRequests.DeleteFavoriteVideo, playlistItemId: video?.playlistItemId) { (videosInfo, nextPageToken, prevPageToken, videoInfo, success, error) in
+            authClient.getPlaylists(AuthorizedClient.SubsequentRequests.DeleteFavoriteVideo, token: nil, playlistItemId: video?.playlistItemId) { (videosInfo, nextPageToken, prevPageToken, videoInfo, success, error) in
                 if (success != nil){
                     self.video?.isFavorite = false
                     self.video?.user = nil
@@ -83,7 +83,7 @@ class VideoPlayerViewController: UIViewController {
         }else{
             self.isFavorite = true
             print("isFavorite is \(isFavorite), so we're going to ADD the video.")
-            authClient.getPlaylists(AuthorizedClient.SubsequentRequests.AddFavoriteVideo, videoId: videoId) { (videosInfo, nextPageToken, prevPageToken, videoInfo, success, error) in
+            authClient.getPlaylists(AuthorizedClient.SubsequentRequests.AddFavoriteVideo, token: nil, videoId: videoId) { (videosInfo, nextPageToken, prevPageToken, videoInfo, success, error) in
                 if let videoInfo = videoInfo{
                     self.video?.isFavorite = true
                     self.video?.playlistItemId = videoInfo[AuthorizedClient.ResponseKeys.PlaylistItemId] as? String

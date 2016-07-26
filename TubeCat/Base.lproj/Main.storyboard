@@ -363,6 +363,11 @@
                                     <action selector="previousPagePressed:" destination="1TV-a0-9jb" id="b9e-PZ-3Td"/>
                                 </connections>
                             </barButtonItem>
+                            <barButtonItem systemItem="refresh" id="vzM-H3-bA1">
+                                <connections>
+                                    <action selector="refresh:" destination="1TV-a0-9jb" id="I6J-6j-GaP"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -500,7 +505,29 @@
                             <outlet property="delegate" destination="3kp-XZ-WFZ" id="OOH-nN-3bY"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="GTD-zs-YiN"/>
+                    <navigationItem key="navigationItem" id="GTD-zs-YiN">
+                        <rightBarButtonItems>
+                            <barButtonItem title="&gt;" id="c2b-Yf-JN9">
+                                <connections>
+                                    <action selector="goToNextPage:" destination="3kp-XZ-WFZ" id="XDR-zy-Pyk"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="&lt;" id="AfX-SS-MUs">
+                                <connections>
+                                    <action selector="goToPrevPage:" destination="3kp-XZ-WFZ" id="aZV-3V-MMq"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="refresh" id="aU0-2g-c3a">
+                                <connections>
+                                    <action selector="refresh:" destination="3kp-XZ-WFZ" id="QtF-Zi-OFJ"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="nextPageButton" destination="c2b-Yf-JN9" id="SM1-pA-5mi"/>
+                        <outlet property="prevPageButton" destination="AfX-SS-MUs" id="rn3-0n-LNX"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uLo-DH-q5h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

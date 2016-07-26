@@ -2,7 +2,7 @@
 //  Category+CoreDataProperties.swift
 //  
 //
-//  Created by Leqi Long on 7/20/16.
+//  Created by Leqi Long on 7/26/16.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,6 +14,7 @@ import CoreData
 
 extension Category {
 
+    @NSManaged var boxIndex: NSNumber?
     @NSManaged var currentPageToken: String?
     @NSManaged var id: String?
     @NSManaged var imageUrl: String?

@@ -38,9 +38,10 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         searchResultsTableView.dataSource = self
         searchResultsTableView.separatorStyle = UITableViewCellSeparatorStyle.None
         searchTextField.delegate = self
-        
         waitView.hidden = true 
     }
+    
+    
     
     @IBAction func changeSegmentContent(sender: AnyObject) {
         
@@ -183,14 +184,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         }
                         
                         self.searchResultsTableView.reloadData()
-                        
-                        if let nextPageToken = nextPageToken{
-                            self.nextPageToken = nextPageToken
-                        }
-                        
-                        if let prevPageToken = prevPageToken{
-                            self.prevPageToken = prevPageToken
-                        }
                     }else{
                         print(error?.localizedDescription)
                     }

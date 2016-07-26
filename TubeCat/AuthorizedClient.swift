@@ -18,7 +18,7 @@ class AuthorizedClient: NSObject{
         request = Request(url: url)
     }
     
-    func getPlaylists(subsequentRequest: String?, token: String? = nil, videoId: String? = nil, playlistItemId: String? = nil, completionHandler: (videosInfo: [[String:String]]?, nextPageToken: String?, prevPageToken: String? , videoInfo: [String:AnyObject]? , success: Bool? , error: NSError?)->Void){
+    func getPlaylists(subsequentRequest: String?, token: String?, videoId: String? = nil, playlistItemId: String? = nil, completionHandler: (videosInfo: [[String:String]]?, nextPageToken: String?, prevPageToken: String? , videoInfo: [String:AnyObject]? , success: Bool? , error: NSError?)->Void){
         let parameters: [String:AnyObject] = [
             ParameterKeys.Part:ParameterValues.ContentDetails,
             ParameterKeys.Mine: ParameterValues.Mine,
@@ -57,7 +57,7 @@ class AuthorizedClient: NSObject{
                 if let subsequentRequest = subsequentRequest{
                     switch(subsequentRequest){
                     case SubsequentRequests.GetFavoriteVideos:
-                        self.getFavoritesVideos(favoritesId){ (videosInfo, nextPageToken, prevPageToken, error) in
+                        self.getFavoritesVideos(favoritesId, token: token){ (videosInfo, nextPageToken, prevPageToken, error) in
                             if let videosInfo = videosInfo,
                                 let nextPageToken = nextPageToken,
                                 let prevPageToken = prevPageToken{
@@ -105,7 +105,7 @@ class AuthorizedClient: NSObject{
     }
     
     
-    func getFavoritesVideos(playlistId: String?, token: String? = nil, completionHandler: (videosInfo: [[String:String]]?, nextPageToken: String?, prevPageToken: String?, error: NSError?)->Void){
+    func getFavoritesVideos(playlistId: String?, token: String?, completionHandler: (videosInfo: [[String:String]]?, nextPageToken: String?, prevPageToken: String?, error: NSError?)->Void){
         
         var parameters = [String:AnyObject]()
         
@@ -133,11 +133,6 @@ class AuthorizedClient: NSObject{
                 /* GUARD: Is "items" key in our result? */
                 guard let videosArray = parsedResult[ResponseKeys.Items] as? [[String:AnyObject]] else {
                     self.displayError("Cannot find keys '\(ResponseKeys.Items)' in \(parsedResult)")
-                    return
-                }
-                
-                guard let nextPageToken = parsedResult[ResponseKeys.NextPageToken] as? String else{
-                    self.displayError("All of the results has been shown.")
                     return
                 }
                 
@@ -204,11 +199,18 @@ class AuthorizedClient: NSObject{
 
                 }
                 
-                if let prevPageToken = parsedResult[ResponseKeys.PrePageToken] as? String{
+                if let nextPageToken = parsedResult[ResponseKeys.NextPageToken] as? String,
+                    let prevPageToken = parsedResult[ResponseKeys.PrePageToken] as? String{
                     completionHandler(videosInfo: desiredVideosInfo, nextPageToken: nextPageToken, prevPageToken:prevPageToken, error: nil)
-                }else{
-                    self.displayError("This is the first page!")
+                }else if let nextPageToken = parsedResult[ResponseKeys.NextPageToken] as? String{
+                    print("This is the first page!")
                     completionHandler(videosInfo: desiredVideosInfo, nextPageToken: nextPageToken, prevPageToken:nil, error: nil)
+                }else if let prevPageToken = parsedResult[ResponseKeys.PrePageToken] as? String{
+                    print("This is the last page!")
+                    completionHandler(videosInfo: desiredVideosInfo, nextPageToken: nil, prevPageToken:prevPageToken, error: nil)
+                }else{
+                    print("This is the only page!")
+                    completionHandler(videosInfo: desiredVideosInfo, nextPageToken: nil, prevPageToken:nil, error: nil)
                 }
                 
             }else{

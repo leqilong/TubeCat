@@ -11,6 +11,8 @@ import CoreData
 
 class FavoritesTableViewController: UITableViewController, NSFetchedResultsControllerDelegate{
 
+    @IBOutlet weak var nextPageButton: UIBarButtonItem!
+    @IBOutlet weak var prevPageButton: UIBarButtonItem!
     private let authClient = AuthorizedClient.sharedClient()
     var context: NSManagedObjectContext{
         return CoreDataStack.sharedInstance.context
@@ -26,21 +28,31 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         fetchedResultsController.delegate = self
         return fetchedResultsController
     }()
+    var nextPageToken: String?
+    var prevPageToken: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configure()
         if dataSource.user?.loadedVideos == false {
-            getFavoritesVideos()
+            getFavoritesVideos(nil)
         }
+        if dataSource.user?.prevPageToken == nil{
+            prevPageButton.enabled = false
+        }
+        
+        if dataSource.user?.nextPageToken == nil{
+            nextPageButton.enabled = false
+        }
+        
         executeSearch()
         tableView.reloadData()
         
     }
     
-    func getFavoritesVideos(){
-        authClient.getPlaylists(AuthorizedClient.SubsequentRequests.GetFavoriteVideos){(videosInfo, nextPageToken, prevPageToken, videoInfo, success, error) in
+    func getFavoritesVideos(token: String?){
+        authClient.getPlaylists(AuthorizedClient.SubsequentRequests.GetFavoriteVideos, token: token){(videosInfo, nextPageToken, prevPageToken, videoInfo, success, error) in
             self.context.performBlock(){
                 if let videosInfo = videosInfo{
                     print("We've got \(videosInfo.count) videos back")
@@ -55,9 +67,26 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
                         video.user = self.dataSource.user
                         self.dataSource.user?.loadedVideos = true
                     }
+                    
+                    if let nextPageToken = nextPageToken{
+                        self.dataSource.user?.nextPageToken = nextPageToken
+                        self.nextPageButton.enabled = true
+                    }else{
+                        self.dataSource.user?.nextPageToken = nil
+                        self.nextPageButton.enabled = false
+                    }
+                    
+                    if let prevPageToken = prevPageToken{
+                        self.dataSource.user?.prevPageToken = prevPageToken
+                        self.prevPageButton.enabled = true
+                    }else{
+                        self.dataSource.user?.prevPageToken = nil 
+                        self.prevPageButton.enabled = false
+                    }
                     do{
                         try self.context.save()
                     }catch{}
+
                 }else{
                     print(error?.localizedDescription)
                 }
@@ -70,6 +99,48 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+    }
+    
+    
+    @IBAction func goToNextPage(sender: AnyObject) {
+        prevPageButton.enabled = true
+        prepareForNewPage()
+        getFavoritesVideos(dataSource.user?.nextPageToken)
+        if dataSource.user?.nextPageToken == nil{
+            nextPageButton.enabled = false
+        }else{
+            nextPageButton.enabled = true
+        }
+
+    }
+    
+    @IBAction func goToPrevPage(sender: AnyObject) {
+        nextPageButton.enabled = true
+        prepareForNewPage()
+        getFavoritesVideos(dataSource.user?.prevPageToken)
+        if dataSource.user?.prevPageToken == nil{
+            prevPageButton.enabled = false
+        }else{
+            prevPageButton.enabled = true
+        }
+    }
+    
+    @IBAction func refresh(sender: AnyObject) {
+        prepareForNewPage()
+        getFavoritesVideos(nil)
+    }
+    
+    private func prepareForNewPage(){
+        if let fetchedResults = fetchedResultsController.fetchedObjects{
+            for result in fetchedResults{
+                let video = result as! Video
+                context.deleteObject(video)
+            }
+            
+            do{
+                try self.context.save()
+            }catch{}
+        }
     }
     
     //MARK: - Table view data source
