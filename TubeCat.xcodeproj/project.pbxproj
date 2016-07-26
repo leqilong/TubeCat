@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1000BA361D44DE7D001A6C20 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1000BA351D44DE7D001A6C20 /* SearchViewController.swift */; };
+		1000BA381D463ECE001A6C20 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1000BA371D463ECE001A6C20 /* ProfileViewController.swift */; };
+		1000BA3A1D46B70B001A6C20 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1000BA391D46B70B001A6C20 /* UIImageExtension.swift */; };
 		10027BC01D3453CD002B05AC /* CatBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10027BBF1D3453CD002B05AC /* CatBoxViewController.swift */; };
 		10027BC21D34545D002B05AC /* TubeCat.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 10027BC11D34545D002B05AC /* TubeCat.scnassets */; };
 		100B3BDC1D3F862500F29222 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B3BDB1D3F862500F29222 /* FavoritesTableViewController.swift */; };
@@ -72,6 +74,8 @@
 /* Begin PBXFileReference section */
 		091125A278A171322C8427C1 /* Pods-TubeCatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TubeCatTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TubeCatTests/Pods-TubeCatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		1000BA351D44DE7D001A6C20 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		1000BA371D463ECE001A6C20 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		1000BA391D46B70B001A6C20 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		10027BBF1D3453CD002B05AC /* CatBoxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatBoxViewController.swift; sourceTree = "<group>"; };
 		10027BC11D34545D002B05AC /* TubeCat.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = TubeCat.scnassets; sourceTree = "<group>"; };
 		100B3BDB1D3F862500F29222 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
@@ -243,6 +247,7 @@
 		10FDF98D1D3202AE0002D770 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1000BA391D46B70B001A6C20 /* UIImageExtension.swift */,
 				101238A81D3F8EF100F8E0A3 /* User+CoreDataProperties.swift */,
 				102E41031D3F6D8900A6983F /* Video+CoreDataProperties.swift */,
 				102E40FC1D3F60BC00A6983F /* Category+CoreDataProperties.swift */,
@@ -261,6 +266,7 @@
 		10FDF9901D3203020002D770 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1000BA371D463ECE001A6C20 /* ProfileViewController.swift */,
 				1000BA351D44DE7D001A6C20 /* SearchViewController.swift */,
 				100B3BDD1D3F865100F29222 /* FavoritesTableViewCell.swift */,
 				100B3BDB1D3F862500F29222 /* FavoritesTableViewController.swift */,
@@ -604,6 +610,8 @@
 				102EACE91D34EFF900E06EB0 /* CoreDataStack.swift in Sources */,
 				10FDF9961D3204250002D770 /* YouTubeClient.swift in Sources */,
 				10FDF9921D3203DE0002D770 /* VideosTableViewController.swift in Sources */,
+				1000BA381D463ECE001A6C20 /* ProfileViewController.swift in Sources */,
+				1000BA3A1D46B70B001A6C20 /* UIImageExtension.swift in Sources */,
 				102EACD21D34E8CF00E06EB0 /* Model.xcdatamodeld in Sources */,
 				10F66EC71D3C655F002E3EAE /* VideoPlayerViewController.swift in Sources */,
 				102E40FF1D3F60BC00A6983F /* Category+CoreDataProperties.swift in Sources */,

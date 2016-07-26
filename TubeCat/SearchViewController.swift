@@ -202,18 +202,3 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
 }
 
-
-//Source: http://stackoverflow.com/questions/29046571/cut-a-uiimage-into-a-circle-swiftios
-extension UIImage{
-    var rounded: UIImage? {
-        let imageView = UIImageView(image: self)
-        imageView.layer.cornerRadius = min(size.height/2, size.width/2)
-        imageView.layer.masksToBounds = true
-        UIGraphicsBeginImageContextWithOptions(imageView.bounds.size, false, scale)
-        guard let context = UIGraphicsGetCurrentContext() else { return nil }
-        imageView.layer.renderInContext(context)
-        let result = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return result
-    }
-}

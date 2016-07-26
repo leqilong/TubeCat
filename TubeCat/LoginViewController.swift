@@ -51,10 +51,10 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
             
             let currentUser = User(id: user.userID, context: self.context) // For client-side use only!
             currentUser.authToken = user.authentication.idToken // Safe to send to the server
-            currentUser.firstName = user.profile.givenName
+            currentUser.firstName = user.profile.name
             currentUser.lastName = user.profile.familyName
             currentUser.email = user.profile.email
-            currentUser.imageData = NSData(contentsOfURL: user.profile.imageURLWithDimension(100))
+            currentUser.imageData = NSData(contentsOfURL: user.profile.imageURLWithDimension(200))
             
             dataSource.user = currentUser
             
@@ -68,9 +68,18 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         }
     }
     
-    //        func signIn(signIn: GIDSignIn!, didDisconnectWithUser user: GIDGoogleUser!, withError error: NSError!) {
-    //            <#code#>
-    //        }
+    
+    
+    func signIn(signIn: GIDSignIn!, didDisconnectWithUser user: GIDGoogleUser!, withError error: NSError!) {
+        if let error = error{
+            print(error)
+        }
+        
+        let controller = self.storyboard!.instantiateViewControllerWithIdentifier("tabBarController") as! UITabBarController
+        
+        controller.dismissViewControllerAnimated(true, completion: nil)
+
+    }
     
     
 }
