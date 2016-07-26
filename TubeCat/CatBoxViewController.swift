@@ -12,13 +12,6 @@ import CoreData
 
 class CatBoxViewController: UIViewController, UIPopoverPresentationControllerDelegate, BoxesPickerViewControllerDelegate{
     
-    
-    enum Box{
-        case BoxOne(categories: [CategoryInfo])
-        case BoxTwo(categories: [CategoryInfo])
-        case BoxThree(categories: [CategoryInfo])
-    }
-    
     enum CategoryInfo{
         
         var context: NSManagedObjectContext{
@@ -119,6 +112,7 @@ class CatBoxViewController: UIViewController, UIPopoverPresentationControllerDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupView()
         setupScene()
         setupCamera()
@@ -150,7 +144,7 @@ class CatBoxViewController: UIViewController, UIPopoverPresentationControllerDel
     func setupScene(){
         scnScene = SCNScene()
         scnView.scene = scnScene
-        scnScene.background.contents = "TubeCat.scnassets/Textures/fabric-1407721.jpg"
+        scnScene.background.contents = /*"TubeCat.scnassets/Textures/fabric-1407721.jpg"*/"TubeCat.scnassets/Textures/wallPaper.jpg"
         
         let ambientLightNode = SCNNode()
         ambientLightNode.light = SCNLight()
@@ -236,41 +230,6 @@ class CatBoxViewController: UIViewController, UIPopoverPresentationControllerDel
         
         return materials
     }
-//    
-//    
-//    func createCategories(index: Int?){
-//        
-//        print("About to create new categories!")
-//        //var categoryArray = [Category]()
-//        
-//        if let index = index{
-//            //print("index is \(index)")
-//            for i in 0..<6{
-//                let cat = boxes[index][i].category
-//                boxCategories[index].append(cat)
-//            }
-//            //boxCategories[index] = categoryArray
-//            
-//            do{
-//                try context.save()
-//            }catch{}
-//        }
-//    }
-//    
-//    func loadCategories(index: Int?){
-//        print("About to fetch existing categories!")
-//        let fr = NSFetchRequest(entityName: "Category")
-//        if let index = index{
-//            do{
-//                boxCategories[index] = try context.executeFetchRequest(fr) as! [Category]
-//            }catch let e as NSError{
-//                print("Error in fetchrequest: \(e)")
-//                boxCategories[index] = [Category]()
-//                createCategories(index)
-//            }
-//
-//        }
-//    }
     
     @IBAction func boxFaceTapped(sender: UITapGestureRecognizer) {
         let location = sender.locationInView(scnView)

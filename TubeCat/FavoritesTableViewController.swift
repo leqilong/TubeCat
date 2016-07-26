@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class FavoritesTableViewController: UITableViewController, NSFetchedResultsControllerDelegate{
-    
+
     private let authClient = AuthorizedClient.sharedClient()
     var context: NSManagedObjectContext{
         return CoreDataStack.sharedInstance.context
@@ -31,7 +31,15 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         super.viewDidLoad()
         
         configure()
-
+        if dataSource.user?.loadedVideos == false {
+            getFavoritesVideos()
+        }
+        executeSearch()
+        tableView.reloadData()
+        
+    }
+    
+    func getFavoritesVideos(){
         authClient.getPlaylists(AuthorizedClient.SubsequentRequests.GetFavoriteVideos){(videosInfo, nextPageToken, prevPageToken, videoInfo, success, error) in
             self.context.performBlock(){
                 if let videosInfo = videosInfo{
@@ -45,6 +53,7 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
                         video.thumbnail = NSData(contentsOfURL: NSURL(string: url)!)
                         video.isFavorite = true
                         video.user = self.dataSource.user
+                        self.dataSource.user?.loadedVideos = true
                     }
                     do{
                         try self.context.save()
@@ -55,14 +64,12 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
             }
         }
 
-        executeSearch()
-        tableView.reloadData()
-        
     }
     
     func configure(){
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
     }
     
     //MARK: - Table view data source
@@ -96,6 +103,7 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         cell.videoTitleLabel.text = vid.title
         cell.thumbnailImageView.image = UIImage(data: vid.thumbnail!)
 
+        cell.activityIndicator.hidden = true
         return cell
     }
     

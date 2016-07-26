@@ -14,6 +14,7 @@ class VideoPlayerViewController: UIViewController {
     @IBOutlet weak var videoPlayerView: YTPlayerView!
     
     @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
     
     var videoId: String?
     var playlistItemId: String?
@@ -28,12 +29,12 @@ class VideoPlayerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        titleLabel.text = video?.title
         videoPlayerView.loadWithVideoId(videoId!)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        print("View Will Appear!!!!")
         if let video = video{
             authClient.getPlaylists(AuthorizedClient.SubsequentRequests.GetFavoriteVideos){ (videosInfo, nextPageToken, prevPageToken, videoInfo, success, error) in
                 self.isFavorite = false
@@ -50,9 +51,14 @@ class VideoPlayerViewController: UIViewController {
                     }
                     
                     dispatch_async(dispatch_get_main_queue()) {
-                        self.favoriteButton.tintColor = (self.isFavorite) ? UIColor.greenColor() : nil
+                    self.favoriteButton.imageView!.image = self.favoriteButton.imageView!.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+                    if self.isFavorite{
+                        self.favoriteButton.tintColor = UIColor.redColor()
+                    }else{
+                        self.favoriteButton.tintColor = UIColor.blackColor()
                     }
-
+                  }
+            
                 }
             }
         }
@@ -61,6 +67,7 @@ class VideoPlayerViewController: UIViewController {
     
     @IBAction func toggleFavorite(sender: AnyObject) {
         if isFavorite{
+            self.isFavorite = false
             print("isFavorite is \(isFavorite), so we're going to DELETE the video.")
             authClient.getPlaylists(AuthorizedClient.SubsequentRequests.DeleteFavoriteVideo, playlistItemId: video?.playlistItemId) { (videosInfo, nextPageToken, prevPageToken, videoInfo, success, error) in
                 if (success != nil){
@@ -69,16 +76,15 @@ class VideoPlayerViewController: UIViewController {
                     do{
                         try self.context.save()
                     }catch{}
-                    self.isFavorite = false
                 }else{
                     print(error?.localizedDescription)
                 }
             }
         }else{
+            self.isFavorite = true
             print("isFavorite is \(isFavorite), so we're going to ADD the video.")
             authClient.getPlaylists(AuthorizedClient.SubsequentRequests.AddFavoriteVideo, videoId: videoId) { (videosInfo, nextPageToken, prevPageToken, videoInfo, success, error) in
                 if let videoInfo = videoInfo{
-                    self.isFavorite = true
                     self.video?.isFavorite = true
                     self.video?.playlistItemId = videoInfo[AuthorizedClient.ResponseKeys.PlaylistItemId] as? String
                     self.video?.user = self.dataSource.user
@@ -94,8 +100,14 @@ class VideoPlayerViewController: UIViewController {
             }
         }
         
+        print("isFavorite's value in toggleFavorite is \(self.isFavorite)")
         dispatch_async(dispatch_get_main_queue()) {
-            self.favoriteButton.tintColor = (self.isFavorite) ? UIColor.greenColor() : nil
+            self.favoriteButton.imageView!.image = self.favoriteButton.imageView!.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+            if self.isFavorite{
+                self.favoriteButton.tintColor = UIColor.redColor()
+            }else{
+                self.favoriteButton.tintColor = UIColor.blackColor()
+            }
         }
 
         

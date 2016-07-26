@@ -21,6 +21,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     }
     
     let dataSource = DataSource.sharedClient()
+    var users = [User]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,14 +50,36 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         }
         else {
             
-            let currentUser = User(id: user.userID, context: self.context) // For client-side use only!
-            currentUser.authToken = user.authentication.idToken // Safe to send to the server
-            currentUser.firstName = user.profile.name
-            currentUser.lastName = user.profile.familyName
-            currentUser.email = user.profile.email
-            currentUser.imageData = NSData(contentsOfURL: user.profile.imageURLWithDimension(200))
+            let fr = NSFetchRequest(entityName: "User")
             
-            dataSource.user = currentUser
+            do{
+                print("Will try to fetch existing users in database")
+                users = try context.executeFetchRequest(fr) as! [User]
+            }catch let e as NSError{
+                print("Error in fetchrequest: \(e)")
+                users = [User]()
+            }
+            
+            for existinguUser in users{
+                if existinguUser.id == user.userID{
+                    print("Found an existing user")
+                    dataSource.user = existinguUser
+                    break
+                }
+            }
+            
+            if dataSource.user == nil{
+                //Create a new user
+                print("Creating a new user!")
+                let currentUser = User(id: user.userID, context: self.context) // For client-side use only!
+                currentUser.authToken = user.authentication.idToken // Safe to send to the server
+                currentUser.firstName = user.profile.name
+                currentUser.lastName = user.profile.familyName
+                currentUser.email = user.profile.email
+                currentUser.imageData = NSData(contentsOfURL: user.profile.imageURLWithDimension(200))
+                dataSource.user = currentUser
+                
+            }
             
             do{
                 try self.context.save()

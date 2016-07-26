@@ -36,6 +36,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func configure(){
         searchResultsTableView.delegate = self
         searchResultsTableView.dataSource = self
+        searchResultsTableView.separatorStyle = UITableViewCellSeparatorStyle.None
         searchTextField.delegate = self
         
         waitView.hidden = true 

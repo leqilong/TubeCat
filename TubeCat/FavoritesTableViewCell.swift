@@ -12,4 +12,5 @@ class FavoritesTableViewCell: UITableViewCell {
 
     @IBOutlet weak var videoTitleLabel: UILabel!
     @IBOutlet weak var thumbnailImageView: UIImageView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 }
