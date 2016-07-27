@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 
 //Source: http://stackoverflow.com/questions/29046571/cut-a-uiimage-into-a-circle-swiftios

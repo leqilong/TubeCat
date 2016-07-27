@@ -30,8 +30,6 @@ class BoxesPickerViewController: UIViewController, UIPickerViewDelegate, UIPicke
         boxesPickerView.dataSource = self
         
         boxesPickerView.selectRow(0, inComponent: 0, animated: false)
-        //updateSelectedBox()
-
     }
     
     

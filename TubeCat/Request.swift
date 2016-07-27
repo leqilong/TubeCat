@@ -36,17 +36,6 @@ class Request{
         let request = NSMutableURLRequest(URL: urlForRequests(method, parameters: paramaters))
         let url = urlForRequests(method, parameters: paramaters)
         request.HTTPMethod = requestMethod.rawValue
-        print("requestMethod is \(request.HTTPMethod)!!!!!!")
-        
-        //print("Request url is: \(url)")
-        
-        /*add headers, if any*/
-//        if let headers = headers {
-//            for (key, value) in headers {
-//                request.addValue(value, forHTTPHeaderField: key)
-//            }
-//        }
-        /*add body, if any*/
         if let jsonBody = jsonBody{
             print("jsonBody in request.swift is \(jsonBody)!!!!!!")
             

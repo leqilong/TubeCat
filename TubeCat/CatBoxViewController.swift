@@ -12,6 +12,9 @@ import CoreData
 
 class CatBoxViewController: UIViewController, UIPopoverPresentationControllerDelegate, BoxesPickerViewControllerDelegate{
     
+    
+   //MARK: -data source for setting up each face of the box
+    
     enum CategoryInfo{
         
         var context: NSManagedObjectContext{
@@ -71,29 +74,16 @@ class CatBoxViewController: UIViewController, UIPopoverPresentationControllerDel
     }
     
 
-    
+    //MARK: -Properties
     var thinkBox = [CategoryInfo.Animals, .Politics, .Style, .Education, .Science, .Nonprofit]
-    
     var watchBox = [CategoryInfo.Films, .Sports, .Comedy, .Movies, .Documentary, .TVShows]
-    
     var loveBox = [CategoryInfo.Auto, .Music, .Travel, .Gaming, .PeopleBlogs, .Entertainment]
-    
     var boxes: [[CategoryInfo]]{
         return [thinkBox, watchBox, loveBox]
     }
-    
     var boxCategories = Array(count: 3, repeatedValue: [Category]())
-    
     var currentBoxIndex: Int?
-    
     var boxNode: SCNNode!
-    
- //MARK: Outlets
-    @IBOutlet weak var scnView: SCNView!
-    @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var prevButton: UIButton!
-    
- //MARK: Properties
     var scnScene: SCNScene!
     var cameraNode: SCNNode!
     var geometry: SCNGeometry!
@@ -101,14 +91,11 @@ class CatBoxViewController: UIViewController, UIPopoverPresentationControllerDel
         return CoreDataStack.sharedInstance.context
     }
     private let youtubeClient = YouTubeClient.sharedClient()
-    var nextPageToken: String?
+
     
-    var geometries = [SCNBox(width: 2.0, height: 2.0, length: 2.0, chamferRadius: 0.0),
-                      SCNBox(width: 2.0, height: 2.0, length: 2.0, chamferRadius: 0.0),
-                      SCNBox(width: 2.0, height: 2.0, length: 2.0, chamferRadius: 0.0)]
+ //MARK: Outlets
+    @IBOutlet weak var scnView: SCNView!
     
-    var geometryNodes = [SCNNode]()
-    var nodeInFrame: SCNNode?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -120,17 +107,8 @@ class CatBoxViewController: UIViewController, UIPopoverPresentationControllerDel
         setupBox(0)
     }
     
-    enum CubeFace: Int {
-        case Front, Right, Back, Left, Top, Bottom
-    }
-    
     /*Returns a Boolean value indicating whether the view controller's contents should auto rotate.*/
     override func shouldAutorotate() -> Bool {
-        return true
-    }
-    
-    /*Specifies whether the view controller prefers the status bar to be hidden or shown.*/
-    override func prefersStatusBarHidden() -> Bool {
         return true
     }
     
@@ -144,7 +122,7 @@ class CatBoxViewController: UIViewController, UIPopoverPresentationControllerDel
     func setupScene(){
         scnScene = SCNScene()
         scnView.scene = scnScene
-        scnScene.background.contents = /*"TubeCat.scnassets/Textures/fabric-1407721.jpg"*/"TubeCat.scnassets/Textures/wallPaper.jpg"
+        scnScene.background.contents = "TubeCat.scnassets/Textures/wallPaper.jpg"
         
         let ambientLightNode = SCNNode()
         ambientLightNode.light = SCNLight()
@@ -188,11 +166,9 @@ class CatBoxViewController: UIViewController, UIPopoverPresentationControllerDel
             if boxNode != nil{
                 boxNode.removeFromParentNode()
             }
-            print("About to set up box")
             let geometry = SCNBox(width: 3.0, height: 3.0, length: 3.0, chamferRadius: 0.0)
             geometry.materials = setMaterials(boxes[index!])
             currentBoxIndex = index
-            //print("currentBoxIndex is: \(currentBoxIndex)")
             
             boxNode = SCNNode(geometry: geometry)
             boxNode.position = SCNVector3(x: 0, y: 0.0, z: 0.0)
@@ -209,15 +185,15 @@ class CatBoxViewController: UIViewController, UIPopoverPresentationControllerDel
             spin.duration = 6
             spin.repeatCount = .infinity
             boxNode.addAnimation(spin, forKey: "spin around")
-            //node.position = SCNVector3(x: x, y: 0, z: z)
             boxNode.runAction(repeatedSequence)
         
             boxNode.pivot = SCNMatrix4MakeRotation(Float(M_PI_2), 1, 0, 0)
         
-             scnScene.rootNode.addChildNode(boxNode)
+            scnScene.rootNode.addChildNode(boxNode)
         
     }
     
+    //MARK: - set up material for each face of the cube
     func setMaterials(box: [CategoryInfo]) -> [SCNMaterial]{
         var materials = [SCNMaterial]()
         
@@ -239,9 +215,7 @@ class CatBoxViewController: UIViewController, UIPopoverPresentationControllerDel
             
             _ = node.geometry!.materials[result.geometryIndex]
             
-            print("geometryIndex is \(result.geometryIndex)")
-            
-            print("segue is about to start")
+            //Use NSPredicate to fetch existing categories which belongs to the current index of the boxes
             let fr = NSFetchRequest(entityName: "Category")
             fr.predicate = NSPredicate(format: "boxIndex == \(currentBoxIndex!)")
             
@@ -254,7 +228,7 @@ class CatBoxViewController: UIViewController, UIPopoverPresentationControllerDel
             }
 
             if boxCategories[currentBoxIndex!].isEmpty{
-                print("About to create new categories for currentBoxIndex \(currentBoxIndex)!")
+                print("No existing categories. About to create new categories for currentBoxIndex \(currentBoxIndex)!")
                 for i in 0..<6{
                     let cat = boxes[currentBoxIndex!][i].category
                     cat.boxIndex = currentBoxIndex
@@ -289,14 +263,12 @@ class CatBoxViewController: UIViewController, UIPopoverPresentationControllerDel
 
             for cat in boxCategories[currentBoxIndex!]{
                 if cat.id == categoryId{
-                    print("cat.id is \(cat.id) and categoryId is (categoryId)")
                         videosTableVC.category = cat
                         break
                 }
             }
 
            self.navigationController?.pushViewController(videosTableVC, animated: true)
-           print("hit face: \(CubeFace(rawValue: result.geometryIndex))")
         }
     }
 }

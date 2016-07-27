@@ -35,7 +35,7 @@ class VideoPlayerViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        if let video = video{
+        if let _ = video{
             authClient.getPlaylists(AuthorizedClient.SubsequentRequests.GetFavoriteVideos, token: nil){ (videosInfo, nextPageToken, prevPageToken, videoInfo, success, error) in
                 self.isFavorite = false
                 if let videosInfo = videosInfo{
@@ -68,39 +68,31 @@ class VideoPlayerViewController: UIViewController {
     @IBAction func toggleFavorite(sender: AnyObject) {
         if isFavorite{
             self.isFavorite = false
-            print("isFavorite is \(isFavorite), so we're going to DELETE the video.")
             authClient.getPlaylists(AuthorizedClient.SubsequentRequests.DeleteFavoriteVideo, token: nil, playlistItemId: video?.playlistItemId) { (videosInfo, nextPageToken, prevPageToken, videoInfo, success, error) in
                 if (success != nil){
                     self.video?.isFavorite = false
                     self.video?.user = nil
-                    do{
-                        try self.context.save()
-                    }catch{}
                 }else{
                     print(error?.localizedDescription)
                 }
             }
         }else{
             self.isFavorite = true
-            print("isFavorite is \(isFavorite), so we're going to ADD the video.")
             authClient.getPlaylists(AuthorizedClient.SubsequentRequests.AddFavoriteVideo, token: nil, videoId: videoId) { (videosInfo, nextPageToken, prevPageToken, videoInfo, success, error) in
                 if let videoInfo = videoInfo{
                     self.video?.isFavorite = true
                     self.video?.playlistItemId = videoInfo[AuthorizedClient.ResponseKeys.PlaylistItemId] as? String
                     self.video?.user = self.dataSource.user
-                    
-                    print("Added favorite video. Now set self.video?.playlistItemId as \(self.video?.playlistItemId)!!!!!!!!")
-                    
-                    do{
-                        try self.context.save()
-                    }catch{}
                 }else{
                     print(error?.localizedDescription)
                 }
             }
         }
         
-        print("isFavorite's value in toggleFavorite is \(self.isFavorite)")
+        do{
+            try self.context.save()
+        }catch{}
+
         dispatch_async(dispatch_get_main_queue()) {
             self.favoriteButton.imageView!.image = self.favoriteButton.imageView!.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
             if self.isFavorite{

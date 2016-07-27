@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class VideosTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class VideosTableViewController: CoreDataTableViewController{
     
  
     @IBOutlet weak var nextPageButton: UIBarButtonItem!
@@ -216,51 +216,6 @@ class VideosTableViewController: UITableViewController, NSFetchedResultsControll
         videoPlayerVC.videoId = vid.id!
         videoPlayerVC.video = vid
         self.navigationController?.pushViewController(videoPlayerVC, animated: true)
-    }
-}
-
-
-extension VideosTableViewController{
-    //MARK: NSFetchedResultsControllerDelegate Methods
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
-        tableView.beginUpdates()
-    }
-    
-    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
-        
-        let set = NSIndexSet(index: sectionIndex)
-        
-        switch(type){
-        case .Insert:
-            self.tableView.insertSections(set, withRowAnimation: .Fade)
-        case .Delete:
-            self.tableView.deleteSections(set, withRowAnimation: .Fade)
-        default:
-            break
-        }
-    }
-    
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-        
-        switch (type) {
-        case .Update:
-            //print("Update object: \(newIndexPath)")
-            self.tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-        case .Insert:
-            //print("Insert object : \(newIndexPath)")
-            self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
-        case .Delete:
-            //print("Delete object: \(newIndexPath)")
-            self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-        case .Move:
-            self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-            self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
-        }
-    }
-    
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        tableView.reloadData()
-        tableView.endUpdates()
     }
 }
 

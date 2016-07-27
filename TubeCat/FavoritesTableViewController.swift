@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class FavoritesTableViewController: UITableViewController, NSFetchedResultsControllerDelegate{
+class FavoritesTableViewController: CoreDataTableViewController{
 
     @IBOutlet weak var nextPageButton: UIBarButtonItem!
     @IBOutlet weak var prevPageButton: UIBarButtonItem!
@@ -36,6 +36,8 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         
         configure()
         if dataSource.user?.loadedVideos == false {
+            print("A new user. loadedVideos is false")
+            prepareForNewPage()
             getFavoritesVideos(nil)
         }
         if dataSource.user?.prevPageToken == nil{
@@ -165,6 +167,7 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         }
     }
     
+    //MARK: -UITableViewDelegate methods
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("favoriteCell", forIndexPath: indexPath) as! FavoritesTableViewCell
@@ -214,54 +217,9 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
 }
 
 extension FavoritesTableViewController{
-    //MARK: NSFetchedResultsControllerDelegate Methods
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
-        tableView.beginUpdates()
-    }
-    
-    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
-        
-        let set = NSIndexSet(index: sectionIndex)
-        
-        switch(type){
-        case .Insert:
-            self.tableView.insertSections(set, withRowAnimation: .Fade)
-        case .Delete:
-            self.tableView.deleteSections(set, withRowAnimation: .Fade)
-        default:
-            break
-        }
-    }
-    
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-        
-        switch (type) {
-        case .Update:
-            //print("Update object: \(newIndexPath)")
-            self.tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-        case .Insert:
-            //print("Insert object : \(newIndexPath)")
-            self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
-        case .Delete:
-            //print("Delete object: \(newIndexPath)")
-            self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-        case .Move:
-            self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-            self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
-        }
-    }
-    
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        tableView.reloadData()
-        tableView.endUpdates()
-    }
-}
-
-extension FavoritesTableViewController{
     func executeSearch(){
         do{
             try fetchedResultsController.performFetch()
-            //tableView.reloadData()
         }catch let e as NSError{
             print("Error while trying to perform a search: \n\(e)\n\(fetchedResultsController)")
         }

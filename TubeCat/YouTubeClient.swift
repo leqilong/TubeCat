@@ -31,7 +31,6 @@ class YouTubeClient: NSObject{
         }
         
         if let token = token{
-            print("Current page token from YouTubeClient.swift is \(token)")
             parameters[ParameterKeys.PageToken] = token
         }
         request.taskForAnyMethod(Methods.Search, paramaters: parameters, requestMethod: .GET) { (result, error) in
@@ -49,8 +48,6 @@ class YouTubeClient: NSObject{
                     self.displayError("All of the results has been shown.")
                     return
                 }
-                
-                print("nextPageToken is \(nextPageToken)")
                 
                 for video in videosArray{
                     
@@ -147,7 +144,6 @@ class YouTubeClient: NSObject{
         }
         
         if let token = token{
-            print("Current page token from YouTubeClient.swift is \(token)")
             parameters[ParameterKeys.PageToken] = token
         }
         

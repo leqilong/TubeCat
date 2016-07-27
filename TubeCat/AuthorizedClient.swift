@@ -203,13 +203,10 @@ class AuthorizedClient: NSObject{
                     let prevPageToken = parsedResult[ResponseKeys.PrePageToken] as? String{
                     completionHandler(videosInfo: desiredVideosInfo, nextPageToken: nextPageToken, prevPageToken:prevPageToken, error: nil)
                 }else if let nextPageToken = parsedResult[ResponseKeys.NextPageToken] as? String{
-                    print("This is the first page!")
                     completionHandler(videosInfo: desiredVideosInfo, nextPageToken: nextPageToken, prevPageToken:nil, error: nil)
                 }else if let prevPageToken = parsedResult[ResponseKeys.PrePageToken] as? String{
-                    print("This is the last page!")
                     completionHandler(videosInfo: desiredVideosInfo, nextPageToken: nil, prevPageToken:prevPageToken, error: nil)
                 }else{
-                    print("This is the only page!")
                     completionHandler(videosInfo: desiredVideosInfo, nextPageToken: nil, prevPageToken:nil, error: nil)
                 }
                 
@@ -229,8 +226,7 @@ class AuthorizedClient: NSObject{
                 ParameterKeys.AccessToken: "\(GIDSignIn.sharedInstance().currentUser.authentication.accessToken)"
             ]
         
-        print("videoId is: \(videoId). And playlistId is \(playlistId)!!!!")
-        let jsonBody: [String:AnyObject] = [
+            let jsonBody: [String:AnyObject] = [
             JSONBodyKeys.Snippet: [
                 JSONBodyKeys.PlayListId: playlistId,
                 JSONBodyKeys.ResourceId: [
@@ -239,10 +235,7 @@ class AuthorizedClient: NSObject{
                 ]
             ]
         ]
-//        let jsonString = "json=[{\"str\":\"Hello\",\"num\":1},{\"str\":\"Goodbye\",\"num\":99}]"
-            print("And jsonBody is \(jsonBody)")
-        
-            request.taskForAnyMethod(Methods.PlayListItems, paramaters: parameter, requestMethod: .POST, jsonBody: jsonBody){ (result, error) in
+        request.taskForAnyMethod(Methods.PlayListItems, paramaters: parameter, requestMethod: .POST, jsonBody: jsonBody){ (result, error) in
                 if let result = result{
                     let parsedResult = try! NSJSONSerialization.JSONObjectWithData(result, options: .AllowFragments) as! [String:AnyObject]
                     

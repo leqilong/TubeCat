@@ -160,7 +160,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         youtubeClient.searchByKeywords(keywords, resultType: resultType, channelId: channelId, token: pageToken){ (resultsInfo, nextPageToken, prevPageToken, error) in
                 var resultDetailDict = [String:AnyObject]()
-                //var videoDetailDict: [String:AnyObject]?
                 dispatch_async(dispatch_get_main_queue()) {
                     if let resultsInfo = resultsInfo{
                         for result in resultsInfo{
@@ -184,6 +183,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         }
                         
                         self.searchResultsTableView.reloadData()
+                        
                     }else{
                         print(error?.localizedDescription)
                     }

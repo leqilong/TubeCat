@@ -9,13 +9,14 @@
 /* Begin PBXBuildFile section */
 		1000BA361D44DE7D001A6C20 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1000BA351D44DE7D001A6C20 /* SearchViewController.swift */; };
 		1000BA381D463ECE001A6C20 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1000BA371D463ECE001A6C20 /* ProfileViewController.swift */; };
-		1000BA3A1D46B70B001A6C20 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1000BA391D46B70B001A6C20 /* UIImageExtension.swift */; };
+		1000BA3A1D46B70B001A6C20 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1000BA391D46B70B001A6C20 /* Extensions.swift */; };
 		1000BA3D1D476402001A6C20 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1000BA3C1D476402001A6C20 /* User.swift */; };
 		1000BA3F1D476409001A6C20 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1000BA3E1D476409001A6C20 /* User+CoreDataProperties.swift */; };
 		1000BA421D477D56001A6C20 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1000BA411D477D56001A6C20 /* Category.swift */; };
 		1000BA441D477D60001A6C20 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1000BA431D477D60001A6C20 /* Category+CoreDataProperties.swift */; };
 		1000BA471D4833BD001A6C20 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1000BA461D4833BD001A6C20 /* Video.swift */; };
 		1000BA491D4833C6001A6C20 /* Video+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1000BA481D4833C6001A6C20 /* Video+CoreDataProperties.swift */; };
+		1000BA4B1D488F99001A6C20 /* CoreDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1000BA4A1D488F99001A6C20 /* CoreDataTableViewController.swift */; };
 		10027BC01D3453CD002B05AC /* CatBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10027BBF1D3453CD002B05AC /* CatBoxViewController.swift */; };
 		10027BC21D34545D002B05AC /* TubeCat.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 10027BC11D34545D002B05AC /* TubeCat.scnassets */; };
 		100B3BDC1D3F862500F29222 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B3BDB1D3F862500F29222 /* FavoritesTableViewController.swift */; };
@@ -75,7 +76,7 @@
 		091125A278A171322C8427C1 /* Pods-TubeCatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TubeCatTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TubeCatTests/Pods-TubeCatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		1000BA351D44DE7D001A6C20 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		1000BA371D463ECE001A6C20 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		1000BA391D46B70B001A6C20 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		1000BA391D46B70B001A6C20 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1000BA3B1D4763D2001A6C20 /* Model 8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 8.xcdatamodel"; sourceTree = "<group>"; };
 		1000BA3C1D476402001A6C20 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1000BA3E1D476409001A6C20 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -85,6 +86,7 @@
 		1000BA451D483397001A6C20 /* Model 10.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 10.xcdatamodel"; sourceTree = "<group>"; };
 		1000BA461D4833BD001A6C20 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		1000BA481D4833C6001A6C20 /* Video+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Video+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		1000BA4A1D488F99001A6C20 /* CoreDataTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTableViewController.swift; sourceTree = "<group>"; };
 		10027BBF1D3453CD002B05AC /* CatBoxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatBoxViewController.swift; sourceTree = "<group>"; };
 		10027BC11D34545D002B05AC /* TubeCat.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = TubeCat.scnassets; sourceTree = "<group>"; };
 		100B3BDB1D3F862500F29222 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
@@ -220,7 +222,6 @@
 			children = (
 				1097C0AE1D3E340C001C9190 /* TubeCat-Bridging-Header.h */,
 				10FDF9631D310B360002D770 /* Main.storyboard */,
-				10027BC11D34545D002B05AC /* TubeCat.scnassets */,
 				10FDF9971D32042E0002D770 /* Model */,
 				10FDF9901D3203020002D770 /* Controller */,
 				101653041D3E0CBF00BEB15D /* GoogleSignInSDK */,
@@ -252,13 +253,14 @@
 			children = (
 				1000BA481D4833C6001A6C20 /* Video+CoreDataProperties.swift */,
 				1000BA431D477D60001A6C20 /* Category+CoreDataProperties.swift */,
-				1000BA391D46B70B001A6C20 /* UIImageExtension.swift */,
+				1000BA391D46B70B001A6C20 /* Extensions.swift */,
 				1000BA3E1D476409001A6C20 /* User+CoreDataProperties.swift */,
 				10FDF95F1D310B360002D770 /* AppDelegate.swift */,
 				10B542E11D3CBC4E003B89F1 /* Assets.bundle */,
 				10B542DD1D3CBB90003B89F1 /* YTPlayerView.h */,
 				10B542E01D3CBC24003B89F1 /* YouTubeiOSPlayerHelper.h */,
 				10B542DE1D3CBB90003B89F1 /* YTPlayerView.m */,
+				10027BC11D34545D002B05AC /* TubeCat.scnassets */,
 				10FDF9661D310B360002D770 /* Assets.xcassets */,
 				10FDF96B1D310B360002D770 /* Info.plist */,
 				10FDF9681D310B360002D770 /* LaunchScreen.storyboard */,
@@ -269,6 +271,7 @@
 		10FDF9901D3203020002D770 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1000BA4A1D488F99001A6C20 /* CoreDataTableViewController.swift */,
 				1000BA371D463ECE001A6C20 /* ProfileViewController.swift */,
 				1000BA351D44DE7D001A6C20 /* SearchViewController.swift */,
 				100B3BDD1D3F865100F29222 /* FavoritesTableViewCell.swift */,
@@ -603,6 +606,7 @@
 				1000BA471D4833BD001A6C20 /* Video.swift in Sources */,
 				100B3BDC1D3F862500F29222 /* FavoritesTableViewController.swift in Sources */,
 				10FDF99A1D3204510002D770 /* YouTubeConstants.swift in Sources */,
+				1000BA4B1D488F99001A6C20 /* CoreDataTableViewController.swift in Sources */,
 				10FDF9601D310B360002D770 /* AppDelegate.swift in Sources */,
 				10F66EBE1D3B3235002E3EAE /* BoxesPickerViewController.swift in Sources */,
 				10FDF9941D3204010002D770 /* Request.swift in Sources */,
@@ -612,7 +616,7 @@
 				10FDF9961D3204250002D770 /* YouTubeClient.swift in Sources */,
 				10FDF9921D3203DE0002D770 /* VideosTableViewController.swift in Sources */,
 				1000BA381D463ECE001A6C20 /* ProfileViewController.swift in Sources */,
-				1000BA3A1D46B70B001A6C20 /* UIImageExtension.swift in Sources */,
+				1000BA3A1D46B70B001A6C20 /* Extensions.swift in Sources */,
 				102EACD21D34E8CF00E06EB0 /* Model.xcdatamodeld in Sources */,
 				1000BA3D1D476402001A6C20 /* User.swift in Sources */,
 				10F66EC71D3C655F002E3EAE /* VideoPlayerViewController.swift in Sources */,
