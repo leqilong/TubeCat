@@ -2,7 +2,7 @@
 //  Video.swift
 //  
 //
-//  Created by Leqi Long on 7/20/16.
+//  Created by Leqi Long on 7/26/16.
 //
 //
 
@@ -17,11 +17,11 @@ class Video: NSManagedObject {
             self.init(entity: ent, insertIntoManagedObjectContext: context)
             self.id = id
             self.title = title
-            self.isFavorite = false 
         }else{
             fatalError("Unable to find entity name!")
         }
     }
+    
 
 
 }

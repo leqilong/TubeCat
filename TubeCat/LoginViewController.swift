@@ -39,6 +39,13 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         //GIDSignIn.sharedInstance().signInSilently()
     }
     
+    
+    @IBAction func signUpButtonPressed(sender: AnyObject) {
+        let signUpURL = NSURL(string: "https://accounts.google.com/signup")
+        if UIApplication.sharedApplication().canOpenURL(signUpURL!){
+            UIApplication.sharedApplication().openURL(signUpURL!)
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

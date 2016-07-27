@@ -325,11 +325,17 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="aOG-F0-cAV">
+                                            <rect key="frame" x="51" y="40" width="37" height="37"/>
+                                            <color key="color" red="0.99200159311294556" green="0.6326068639755249" blue="0.21838864684104919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </activityIndicatorView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="aOG-F0-cAV" firstAttribute="centerX" secondItem="fVS-Dw-lvw" secondAttribute="centerX" id="0zq-gt-c1t"/>
                                         <constraint firstItem="fVS-Dw-lvw" firstAttribute="top" secondItem="kz3-Ef-ynD" secondAttribute="top" id="6Fo-OC-TBC"/>
                                         <constraint firstItem="fx1-Q2-oUm" firstAttribute="top" secondItem="kz3-Ef-ynD" secondAttribute="bottom" constant="8" symbolic="YES" id="8sm-HT-j8i"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="fx1-Q2-oUm" secondAttribute="bottom" constant="-0.5" id="KL9-DX-qOE"/>
+                                        <constraint firstItem="aOG-F0-cAV" firstAttribute="centerY" secondItem="Br8-VG-mlc" secondAttribute="centerY" id="NoS-iz-ogY"/>
                                         <constraint firstItem="fVS-Dw-lvw" firstAttribute="centerY" secondItem="Br8-VG-mlc" secondAttribute="centerY" id="TWX-7d-VqY"/>
                                         <constraint firstItem="kz3-Ef-ynD" firstAttribute="leading" secondItem="fx1-Q2-oUm" secondAttribute="leading" id="c3d-cT-9TJ"/>
                                         <constraint firstItem="fVS-Dw-lvw" firstAttribute="top" secondItem="Br8-VG-mlc" secondAttribute="topMargin" id="eJd-Fz-lTa"/>
@@ -340,6 +346,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="activityIndicator" destination="aOG-F0-cAV" id="YPz-Y2-3pu"/>
                                     <outlet property="thumbnailImageView" destination="fVS-Dw-lvw" id="i0h-ph-mHq"/>
                                     <outlet property="videoDescriptionLabel" destination="fx1-Q2-oUm" id="cpp-0W-bW7"/>
                                     <outlet property="videoTitleLabel" destination="kz3-Ef-ynD" id="diX-Zd-HCp"/>
@@ -387,11 +394,11 @@
                         <viewControllerLayoutGuide type="top" id="c69-3j-2JL"/>
                         <viewControllerLayoutGuide type="bottom" id="1Gd-vl-YtK"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="iRW-6n-9gy">
+                    <view key="view" opaque="NO" alpha="0.5" contentMode="scaleToFill" id="iRW-6n-9gy">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Wo-5Y-2hZ">
+                            <pickerView alpha="0.55000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Wo-5Y-2hZ">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </pickerView>
                         </subviews>
@@ -723,12 +730,24 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PUo-ZN-vaZ">
+                                <rect key="frame" x="193" y="342" width="214" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
+                                <state key="normal" title="Don't have an account? Sign up">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="signUpButtonPressed:" destination="i5L-F3-tbJ" eventType="touchUpInside" id="CqZ-4E-biS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="zhh-vw-Ki6" firstAttribute="centerX" secondItem="MG9-4U-7Bw" secondAttribute="centerX" id="4QM-gp-wOw"/>
+                            <constraint firstItem="PUo-ZN-vaZ" firstAttribute="centerX" secondItem="cfC-Lc-dbg" secondAttribute="centerX" id="Gn6-zg-Acf"/>
                             <constraint firstItem="zhh-vw-Ki6" firstAttribute="centerY" secondItem="cfC-Lc-dbg" secondAttribute="centerY" id="Gxb-pp-ESO"/>
                             <constraint firstItem="zhh-vw-Ki6" firstAttribute="centerX" secondItem="cfC-Lc-dbg" secondAttribute="centerX" id="JqZ-xB-cU0"/>
+                            <constraint firstItem="PUo-ZN-vaZ" firstAttribute="top" secondItem="zhh-vw-Ki6" secondAttribute="bottom" constant="18" id="RIb-AO-uTx"/>
                             <constraint firstItem="MG9-4U-7Bw" firstAttribute="top" secondItem="tpQ-Sl-Lwm" secondAttribute="bottom" constant="83" id="mBs-nz-DyV"/>
                         </constraints>
                     </view>

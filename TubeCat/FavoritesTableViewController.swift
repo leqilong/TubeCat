@@ -62,7 +62,7 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
                         let url = videoInfo[AuthorizedClient.ResponseKeys.ThumbnailURL]! as String
                         let description = videoInfo[AuthorizedClient.ResponseKeys.Description]! as String
                         let video = Video(id: videoId, title: title, context: self.context)
-                        video.thumbnail = NSData(contentsOfURL: NSURL(string: url)!)
+                        video.thumbnailURL = url
                         video.isFavorite = true
                         video.user = self.dataSource.user
                         self.dataSource.user?.loadedVideos = true
@@ -168,13 +168,34 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("favoriteCell", forIndexPath: indexPath) as! FavoritesTableViewCell
-        
         let vid = fetchedResultsController.objectAtIndexPath(indexPath) as! Video
+        cell.thumbnailImageView.image = nil
+        cell.thumbnailImageView.backgroundColor = UIColor.clearColor()
+        cell.activityIndicator.hidden = false
+        cell.activityIndicator.startAnimating()
+        
+        if let imageData = vid.thumbnail{
+            cell.thumbnailImageView.image = UIImage(data: vid.thumbnail!)
+            cell.activityIndicator.hidden = true
+        }else{
+            dispatch_async(dispatch_get_main_queue()) {
+                if let imageURL = NSURL(string: vid.thumbnailURL!){
+                    if let imageData = NSData(contentsOfURL: imageURL),
+                        let image = UIImage(data: imageData){
+                        cell.thumbnailImageView.image = image
+                        vid.thumbnail = imageData
+                        cell.activityIndicator.hidden = true
+                        do{
+                            try self.context.save()
+                        }catch{}
+                        
+                    }
+                }
+            }
+            
+        }
         
         cell.videoTitleLabel.text = vid.title
-        cell.thumbnailImageView.image = UIImage(data: vid.thumbnail!)
-
-        cell.activityIndicator.hidden = true
         return cell
     }
     

@@ -171,7 +171,7 @@ class CatBoxViewController: UIViewController, UIPopoverPresentationControllerDel
             bpvc.delegate = self
             
             if let boxPickerPopover = bpvc.popoverPresentationController{
-                bpvc.preferredContentSize = CGSizeMake(self.view.frame.width/2, self.view.frame.height/3)
+                bpvc.preferredContentSize = CGSizeMake(self.view.frame.width/3, self.view.frame.height/4)
                 boxPickerPopover.delegate = self
             }
         }
@@ -205,13 +205,13 @@ class CatBoxViewController: UIViewController, UIPopoverPresentationControllerDel
 
             let spin = CABasicAnimation(keyPath: "rotation")
             spin.fromValue =  NSValue(SCNVector4: SCNVector4(x: 0, y: 0, z: 1, w: 0))
-            spin.toValue = NSValue(SCNVector4: SCNVector4(x: 0, y: 0, z: 1, w: Float(2 * M_PI)))
+            spin.toValue = NSValue(SCNVector4: SCNVector4(x: 1, y: 0, z: 1, w: Float(2 * M_PI)))
             spin.duration = 6
             spin.repeatCount = .infinity
             boxNode.addAnimation(spin, forKey: "spin around")
             //node.position = SCNVector3(x: x, y: 0, z: z)
             boxNode.runAction(repeatedSequence)
-            
+        
             boxNode.pivot = SCNMatrix4MakeRotation(Float(M_PI_2), 1, 0, 0)
         
              scnScene.rootNode.addChildNode(boxNode)

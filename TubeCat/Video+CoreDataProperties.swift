@@ -2,7 +2,7 @@
 //  Video+CoreDataProperties.swift
 //  
 //
-//  Created by Leqi Long on 7/20/16.
+//  Created by Leqi Long on 7/26/16.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -19,6 +19,7 @@ extension Video {
     @NSManaged var playlistItemId: String?
     @NSManaged var text: String?
     @NSManaged var thumbnail: NSData?
+    @NSManaged var thumbnailURL: String?
     @NSManaged var title: String?
     @NSManaged var category: Category?
     @NSManaged var user: User?
