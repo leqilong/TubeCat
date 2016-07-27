@@ -41,7 +41,7 @@ class VideosTableViewController: CoreDataTableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configure()
+        //configure()
         
         if (category.loadedVideos == false){
             getVideos(category!, token: nil)
@@ -60,10 +60,10 @@ class VideosTableViewController: CoreDataTableViewController{
 
     }
     
-    func configure(){
-        tableView.delegate = self
-        tableView.dataSource = self
-    }
+//    func configure(){
+//        tableView.delegate = self
+//        tableView.dataSource = self
+//    }
     
     
     func getVideos(category: Category, token: String?){
@@ -110,6 +110,7 @@ class VideosTableViewController: CoreDataTableViewController{
                 
             }else{
                 print(error?.localizedDescription)
+                self.displayError("We're unable to perform your request at this moment. Please try again later")
             }
          }
        }

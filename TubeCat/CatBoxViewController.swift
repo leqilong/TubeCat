@@ -149,7 +149,7 @@ class CatBoxViewController: UIViewController, UIPopoverPresentationControllerDel
             bpvc.delegate = self
             
             if let boxPickerPopover = bpvc.popoverPresentationController{
-                bpvc.preferredContentSize = CGSizeMake(self.view.frame.width/3, self.view.frame.height/4)
+                bpvc.preferredContentSize = CGSizeMake(self.view.frame.width/2, self.view.frame.height/4)
                 boxPickerPopover.delegate = self
             }
         }

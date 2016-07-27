@@ -56,41 +56,42 @@ class FavoritesTableViewController: CoreDataTableViewController{
     func getFavoritesVideos(token: String?){
         authClient.getPlaylists(AuthorizedClient.SubsequentRequests.GetFavoriteVideos, token: token){(videosInfo, nextPageToken, prevPageToken, videoInfo, success, error) in
             self.context.performBlock(){
-                if let videosInfo = videosInfo{
-                    print("We've got \(videosInfo.count) videos back")
-                    for videoInfo in videosInfo{
-                        let videoId = videoInfo[AuthorizedClient.ResponseKeys.VideoId]! as String
-                        let title = videoInfo[AuthorizedClient.ResponseKeys.Title]! as String
-                        let url = videoInfo[AuthorizedClient.ResponseKeys.ThumbnailURL]! as String
-                        let description = videoInfo[AuthorizedClient.ResponseKeys.Description]! as String
-                        let video = Video(id: videoId, title: title, context: self.context)
-                        video.thumbnailURL = url
-                        video.isFavorite = true
-                        video.user = self.dataSource.user
-                        self.dataSource.user?.loadedVideos = true
-                    }
-                    
-                    if let nextPageToken = nextPageToken{
-                        self.dataSource.user?.nextPageToken = nextPageToken
-                        self.nextPageButton.enabled = true
-                    }else{
-                        self.dataSource.user?.nextPageToken = nil
-                        self.nextPageButton.enabled = false
-                    }
-                    
-                    if let prevPageToken = prevPageToken{
-                        self.dataSource.user?.prevPageToken = prevPageToken
-                        self.prevPageButton.enabled = true
-                    }else{
-                        self.dataSource.user?.prevPageToken = nil 
-                        self.prevPageButton.enabled = false
-                    }
-                    do{
-                        try self.context.save()
-                    }catch{}
-
+                if let error = error{
+                    self.displayError("We're unable to perform your request at the moment. Please try again later")
                 }else{
-                    print(error?.localizedDescription)
+                    if let videosInfo = videosInfo{
+                        print("We've got \(videosInfo.count) videos back")
+                        for videoInfo in videosInfo{
+                            let videoId = videoInfo[AuthorizedClient.ResponseKeys.VideoId]! as String
+                            let title = videoInfo[AuthorizedClient.ResponseKeys.Title]! as String
+                            let url = videoInfo[AuthorizedClient.ResponseKeys.ThumbnailURL]! as String
+                            let description = videoInfo[AuthorizedClient.ResponseKeys.Description]! as String
+                            let video = Video(id: videoId, title: title, context: self.context)
+                            video.thumbnailURL = url
+                            video.isFavorite = true
+                            video.user = self.dataSource.user
+                            self.dataSource.user?.loadedVideos = true
+                        }
+                    
+                        if let nextPageToken = nextPageToken{
+                            self.dataSource.user?.nextPageToken = nextPageToken
+                            self.nextPageButton.enabled = true
+                        }else{
+                            self.dataSource.user?.nextPageToken = nil
+                            self.nextPageButton.enabled = false
+                        }
+                    
+                        if let prevPageToken = prevPageToken{
+                            self.dataSource.user?.prevPageToken = prevPageToken
+                            self.prevPageButton.enabled = true
+                        }else{
+                            self.dataSource.user?.prevPageToken = nil
+                            self.prevPageButton.enabled = false
+                        }
+                        do{
+                            try self.context.save()
+                        }catch{}
+                    }
                 }
             }
         }
@@ -98,8 +99,6 @@ class FavoritesTableViewController: CoreDataTableViewController{
     }
     
     func configure(){
-        tableView.delegate = self
-        tableView.dataSource = self
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
     }
     

@@ -9,11 +9,11 @@
 import Foundation
 
 
-class AuthorizedClient: NSObject{
+class AuthorizedClient{
     
     let request: Request
     
-    override init(){
+    init(){
         let url = URLComponents(scheme: Constants.ApiScheme, host: Constants.ApiHost, path: Constants.ApiPath)
         request = Request(url: url)
     }
@@ -100,6 +100,7 @@ class AuthorizedClient: NSObject{
                 
             }else{
                 self.displayError((error?.localizedDescription)!)
+                completionHandler(videosInfo: nil, nextPageToken: nil, prevPageToken: nil, videoInfo: nil, success: nil, error: error)
             }
         }
     }

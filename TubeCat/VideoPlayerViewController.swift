@@ -73,7 +73,7 @@ class VideoPlayerViewController: UIViewController {
                     self.video?.isFavorite = false
                     self.video?.user = nil
                 }else{
-                    print(error?.localizedDescription)
+                    self.displayError("We're unable to perform your request at the moment. Please try again later")
                 }
             }
         }else{
@@ -85,6 +85,7 @@ class VideoPlayerViewController: UIViewController {
                     self.video?.user = self.dataSource.user
                 }else{
                     print(error?.localizedDescription)
+                    self.displayError("We're unable to perform your request at the moment. Please try again later")
                 }
             }
         }

@@ -55,10 +55,9 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError!) {
         if let error = error {
             print(error)
-        }
-        else {
+            displayError("Unable to sign in at the moment. Please try again later")
             
-            print("Creating a new user!")
+        }else {
             let currentUser = User(id: user.userID, context: context) // For client-side use only!
             currentUser.authToken = user.authentication.idToken // Safe to send to the server
             currentUser.firstName = user.profile.name
@@ -91,6 +90,5 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         controller.dismissViewControllerAnimated(true, completion: nil)
 
     }
-    
     
 }

@@ -55,10 +55,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     //MARK: -UITableViewDataSource methods
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchSegmentContent.selectedSegmentIndex == 0{
             return channelsArray.count
@@ -185,7 +181,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         self.searchResultsTableView.reloadData()
                         
                     }else{
-                        print(error?.localizedDescription)
+                        //print(error?.localizedDescription)
+                        self.displayError("Unable to search at the moment. Try again later.")
                     }
                     
                     self.waitView.hidden = true

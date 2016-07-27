@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		1000BA361D44DE7D001A6C20 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1000BA351D44DE7D001A6C20 /* SearchViewController.swift */; };
 		1000BA381D463ECE001A6C20 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1000BA371D463ECE001A6C20 /* ProfileViewController.swift */; };
-		1000BA3A1D46B70B001A6C20 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1000BA391D46B70B001A6C20 /* Extensions.swift */; };
+		1000BA3A1D46B70B001A6C20 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1000BA391D46B70B001A6C20 /* UIImageExtension.swift */; };
 		1000BA3D1D476402001A6C20 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1000BA3C1D476402001A6C20 /* User.swift */; };
 		1000BA3F1D476409001A6C20 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1000BA3E1D476409001A6C20 /* User+CoreDataProperties.swift */; };
 		1000BA421D477D56001A6C20 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1000BA411D477D56001A6C20 /* Category.swift */; };
@@ -35,6 +35,7 @@
 		10B542DF1D3CBB90003B89F1 /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B542DE1D3CBB90003B89F1 /* YTPlayerView.m */; };
 		10B542E21D3CBC4E003B89F1 /* Assets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 10B542E11D3CBC4E003B89F1 /* Assets.bundle */; };
 		10CBEA771D42D59B00A74BEB /* DataSource .swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CBEA761D42D59B00A74BEB /* DataSource .swift */; };
+		10DF06A51D496EAC0048092D /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DF06A41D496EAB0048092D /* UIViewControllerExtension.swift */; };
 		10F66EBE1D3B3235002E3EAE /* BoxesPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F66EBD1D3B3234002E3EAE /* BoxesPickerViewController.swift */; };
 		10F66EC71D3C655F002E3EAE /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F66EC61D3C655F002E3EAE /* VideoPlayerViewController.swift */; };
 		10F9123E1D3E25CF00D8EFA1 /* YTPlayerView.h in Sources */ = {isa = PBXBuildFile; fileRef = 10B542DD1D3CBB90003B89F1 /* YTPlayerView.h */; };
@@ -76,7 +77,7 @@
 		091125A278A171322C8427C1 /* Pods-TubeCatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TubeCatTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TubeCatTests/Pods-TubeCatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		1000BA351D44DE7D001A6C20 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		1000BA371D463ECE001A6C20 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		1000BA391D46B70B001A6C20 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		1000BA391D46B70B001A6C20 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		1000BA3B1D4763D2001A6C20 /* Model 8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 8.xcdatamodel"; sourceTree = "<group>"; };
 		1000BA3C1D476402001A6C20 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1000BA3E1D476409001A6C20 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -112,6 +113,7 @@
 		10B542E01D3CBC24003B89F1 /* YouTubeiOSPlayerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouTubeiOSPlayerHelper.h; sourceTree = "<group>"; };
 		10B542E11D3CBC4E003B89F1 /* Assets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Assets.bundle; sourceTree = "<group>"; };
 		10CBEA761D42D59B00A74BEB /* DataSource .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataSource .swift"; sourceTree = "<group>"; };
+		10DF06A41D496EAB0048092D /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		10F66EBD1D3B3234002E3EAE /* BoxesPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxesPickerViewController.swift; sourceTree = "<group>"; };
 		10F66EC61D3C655F002E3EAE /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		10FDF95C1D310B360002D770 /* TubeCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TubeCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -253,7 +255,8 @@
 			children = (
 				1000BA481D4833C6001A6C20 /* Video+CoreDataProperties.swift */,
 				1000BA431D477D60001A6C20 /* Category+CoreDataProperties.swift */,
-				1000BA391D46B70B001A6C20 /* Extensions.swift */,
+				1000BA391D46B70B001A6C20 /* UIImageExtension.swift */,
+				10DF06A41D496EAB0048092D /* UIViewControllerExtension.swift */,
 				1000BA3E1D476409001A6C20 /* User+CoreDataProperties.swift */,
 				10FDF95F1D310B360002D770 /* AppDelegate.swift */,
 				10B542E11D3CBC4E003B89F1 /* Assets.bundle */,
@@ -616,7 +619,8 @@
 				10FDF9961D3204250002D770 /* YouTubeClient.swift in Sources */,
 				10FDF9921D3203DE0002D770 /* VideosTableViewController.swift in Sources */,
 				1000BA381D463ECE001A6C20 /* ProfileViewController.swift in Sources */,
-				1000BA3A1D46B70B001A6C20 /* Extensions.swift in Sources */,
+				10DF06A51D496EAC0048092D /* UIViewControllerExtension.swift in Sources */,
+				1000BA3A1D46B70B001A6C20 /* UIImageExtension.swift in Sources */,
 				102EACD21D34E8CF00E06EB0 /* Model.xcdatamodeld in Sources */,
 				1000BA3D1D476402001A6C20 /* User.swift in Sources */,
 				10F66EC71D3C655F002E3EAE /* VideoPlayerViewController.swift in Sources */,

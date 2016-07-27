@@ -8,11 +8,11 @@
 
 import Foundation
 
-class YouTubeClient: NSObject{
+class YouTubeClient{
     
     let request: Request
     
-    override init(){
+    init(){
         let url = URLComponents(scheme: Constants.ApiScheme, host: Constants.ApiHost, path: Constants.ApiPath)
         request = Request(url: url)
     }

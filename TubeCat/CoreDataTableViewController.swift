@@ -74,6 +74,14 @@ class CoreDataTableViewController: UITableViewController, NSFetchedResultsContro
         tableView.reloadData()
         tableView.endUpdates()
     }
-  
+//    
+//    func displayError(message: String){
+//        dispatch_async(dispatch_get_main_queue()) {
+//            let alertView = UIAlertController(title: "", message: message, preferredStyle: .Alert)
+//            alertView.addAction(UIAlertAction(title: "Dismiss", style: .Cancel, handler: nil))
+//            self.presentViewController(alertView, animated: true, completion: nil)
+//        }
+//    }
+
 
 }

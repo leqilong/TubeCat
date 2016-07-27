@@ -238,22 +238,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cCf-T3-TwI" customClass="YTPlayerView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="361"/>
+                            <view opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="745" translatesAutoresizingMaskIntoConstraints="NO" id="cCf-T3-TwI" customClass="YTPlayerView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="517"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AbN-0j-tEp">
-                                <rect key="frame" x="71" y="369" width="509" height="50"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="745" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AbN-0j-tEp">
+                                <rect key="frame" x="71" y="531" width="509" height="50"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="apk-83-T3H">
-                                <rect key="frame" x="20" y="375" width="37" height="37"/>
+                                <rect key="frame" x="20" y="537" width="37" height="37"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="37" id="oMo-AU-RYv"/>
-                                    <constraint firstAttribute="width" constant="37" id="rD5-Xq-gHA"/>
+                                    <constraint firstAttribute="width" constant="37" id="MlD-aC-DH2"/>
+                                    <constraint firstAttribute="height" constant="37" id="zda-j4-Px4"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Button" image="heartIcon"/>
@@ -264,16 +264,16 @@
                         </subviews>
                         <color key="backgroundColor" red="0.73338081174550385" green="0.74290215725360753" blue="0.76670673076923079" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="apk-83-T3H" firstAttribute="top" secondItem="cCf-T3-TwI" secondAttribute="bottom" constant="14" id="3gV-iW-j83"/>
-                            <constraint firstItem="cCf-T3-TwI" firstAttribute="leading" secondItem="5Jl-C5-ZST" secondAttribute="leading" id="8Cx-tZ-jHV"/>
-                            <constraint firstItem="dZf-HB-ks0" firstAttribute="top" secondItem="AbN-0j-tEp" secondAttribute="bottom" constant="181" id="APv-0v-ehu"/>
-                            <constraint firstItem="apk-83-T3H" firstAttribute="leading" secondItem="5Jl-C5-ZST" secondAttribute="leadingMargin" id="FSZ-5f-Jaj"/>
-                            <constraint firstItem="AbN-0j-tEp" firstAttribute="leading" secondItem="apk-83-T3H" secondAttribute="trailing" constant="14" id="NM2-Ym-E3b"/>
-                            <constraint firstItem="cCf-T3-TwI" firstAttribute="top" secondItem="5Jl-C5-ZST" secondAttribute="top" id="PG0-CN-o70"/>
-                            <constraint firstItem="AbN-0j-tEp" firstAttribute="top" secondItem="cCf-T3-TwI" secondAttribute="bottom" constant="8" symbolic="YES" id="Q7D-hY-luX"/>
-                            <constraint firstAttribute="trailing" secondItem="cCf-T3-TwI" secondAttribute="trailing" id="qzp-Lj-TbF"/>
-                            <constraint firstItem="apk-83-T3H" firstAttribute="centerY" secondItem="AbN-0j-tEp" secondAttribute="centerY" id="uRC-EG-KpN"/>
-                            <constraint firstItem="AbN-0j-tEp" firstAttribute="trailing" secondItem="5Jl-C5-ZST" secondAttribute="trailingMargin" id="wxl-hb-0oQ"/>
+                            <constraint firstItem="AbN-0j-tEp" firstAttribute="top" secondItem="cCf-T3-TwI" secondAttribute="bottom" constant="14" id="0QN-tv-d2W"/>
+                            <constraint firstAttribute="trailing" secondItem="cCf-T3-TwI" secondAttribute="trailing" id="1KX-I6-D6B"/>
+                            <constraint firstItem="apk-83-T3H" firstAttribute="top" secondItem="cCf-T3-TwI" secondAttribute="bottom" constant="20" id="4KG-fL-w29"/>
+                            <constraint firstItem="apk-83-T3H" firstAttribute="leading" secondItem="5Jl-C5-ZST" secondAttribute="leadingMargin" id="Tra-qt-CE3"/>
+                            <constraint firstItem="AbN-0j-tEp" firstAttribute="trailing" secondItem="5Jl-C5-ZST" secondAttribute="trailingMargin" id="WMO-ZL-2N8"/>
+                            <constraint firstItem="apk-83-T3H" firstAttribute="centerY" secondItem="AbN-0j-tEp" secondAttribute="centerY" id="czH-ph-Wbd"/>
+                            <constraint firstItem="dZf-HB-ks0" firstAttribute="top" secondItem="AbN-0j-tEp" secondAttribute="bottom" constant="19" id="lWn-k2-ND0"/>
+                            <constraint firstItem="AbN-0j-tEp" firstAttribute="leading" secondItem="apk-83-T3H" secondAttribute="trailing" constant="14" id="nRy-gz-ffc"/>
+                            <constraint firstItem="cCf-T3-TwI" firstAttribute="leading" secondItem="5Jl-C5-ZST" secondAttribute="leading" id="vhL-2Y-seU"/>
+                            <constraint firstItem="cCf-T3-TwI" firstAttribute="top" secondItem="5Jl-C5-ZST" secondAttribute="top" id="yeP-Np-q9q"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="g46-Iy-92f"/>
@@ -747,8 +747,8 @@
                             <constraint firstItem="PUo-ZN-vaZ" firstAttribute="centerX" secondItem="cfC-Lc-dbg" secondAttribute="centerX" id="Gn6-zg-Acf"/>
                             <constraint firstItem="zhh-vw-Ki6" firstAttribute="centerY" secondItem="cfC-Lc-dbg" secondAttribute="centerY" id="Gxb-pp-ESO"/>
                             <constraint firstItem="zhh-vw-Ki6" firstAttribute="centerX" secondItem="cfC-Lc-dbg" secondAttribute="centerX" id="JqZ-xB-cU0"/>
+                            <constraint firstItem="zhh-vw-Ki6" firstAttribute="top" secondItem="MG9-4U-7Bw" secondAttribute="bottom" constant="32" id="K82-d9-Hpt"/>
                             <constraint firstItem="PUo-ZN-vaZ" firstAttribute="top" secondItem="zhh-vw-Ki6" secondAttribute="bottom" constant="18" id="RIb-AO-uTx"/>
-                            <constraint firstItem="MG9-4U-7Bw" firstAttribute="top" secondItem="tpQ-Sl-Lwm" secondAttribute="bottom" constant="83" id="mBs-nz-DyV"/>
                         </constraints>
                     </view>
                     <connections>
