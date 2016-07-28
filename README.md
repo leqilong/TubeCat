@@ -5,15 +5,16 @@ TubeCat is able to retrieve various YouTube videos information using YouTube API
 
 TubeCat achieves data persistence using CoreData.
 
+To run TubeCat, clone or download the project and open the TubeCat.xcworkspace file. 
 
 ## CoreData Model
 TubeCat's coredata model consists of three entities: 
 - User
-    *Attributes: current user's information such as profile picture URL, user id, authentication token, etc.
+*Attributes: current user's information such as profile picture URL, user id, authentication token, etc.
 - Category 
-    *Attributes: category id, page tokens, name of the category, etc, some of which comes in handy as parameters to make HTTP requests to retrieve videos of specific categories
+*Attributes: category id, page tokens, name of the category, etc, some of which comes in handy as parameters to make HTTP requests to retrieve videos of specific categories
 - Video
-    *Attributes: video id, playlist item id, thumbnail image url, video title, video description, etc. This entity has one to many relationships with both User and Category
+*Attributes: video id, playlist item id, thumbnail image url, video title, video description, etc. This entity has one to many relationships with both User and Category
 
 ## View Controller Scenes 
 
