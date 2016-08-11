@@ -26,7 +26,7 @@
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="99" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="a9k-0d-U88">
                                 <rect key="frame" x="0.0" y="110" width="600" height="441"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.94901960780000005" green="0.91372549020000005" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="channelCell" rowHeight="124" id="kja-Gg-zdK">
                                         <rect key="frame" x="0.0" y="28" width="600" height="124"/>
@@ -131,7 +131,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.94901960784313721" green="0.9137254901960784" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="71T-Qr-U1e" firstAttribute="leading" secondItem="a9k-0d-U88" secondAttribute="leading" id="1ek-p4-L1x"/>
                             <constraint firstItem="AJ3-Gy-ZxW" firstAttribute="leading" secondItem="mnp-Gd-fZa" secondAttribute="leadingMargin" id="4Dr-dc-Foy"/>
@@ -402,7 +402,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </pickerView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="6Wo-5Y-2hZ" firstAttribute="leading" secondItem="iRW-6n-9gy" secondAttribute="leading" id="SRA-vw-OHk"/>
                             <constraint firstAttribute="trailing" secondItem="6Wo-5Y-2hZ" secondAttribute="trailing" id="X0W-Yr-Rsn"/>
@@ -462,7 +462,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="98" sectionHeaderHeight="28" sectionFooterHeight="28" id="9nc-Xe-vJU">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.94901960780000005" green="0.91372549020000005" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoriteCell" rowHeight="98" id="S7A-Xt-02w" customClass="FavoritesTableViewCell" customModule="TubeCat" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="98"/>
@@ -680,10 +680,10 @@
             </objects>
             <point key="canvasLocation" x="797" y="1937"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tube Cat Tab Bar Controller-->
         <scene sceneID="cET-oc-ff4">
             <objects>
-                <tabBarController storyboardIdentifier="tabBarController" id="tKr-gc-S3i" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBarController" id="tKr-gc-S3i" customClass="TubeCatTabBarController" customModule="TubeCat" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Fbi-zi-T7d">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

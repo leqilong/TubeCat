@@ -34,6 +34,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func configure(){
+        self.navigationController!.navigationBar.barTintColor = UIColor(red:0.88, green:0.38, blue:0.21, alpha:1.0)
         searchResultsTableView.delegate = self
         searchResultsTableView.dataSource = self
         searchResultsTableView.separatorStyle = UITableViewCellSeparatorStyle.None
@@ -69,6 +70,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         var cell: UITableViewCell!
         if searchSegmentContent.selectedSegmentIndex == 0{
             cell = tableView.dequeueReusableCellWithIdentifier("channelCell", forIndexPath: indexPath)
+            cell.backgroundColor = UIColor(red:0.95, green:0.91, blue:0.86, alpha:1.0)
             
             let channelThumbnailImageView = cell.viewWithTag(1) as! UIImageView
             let channelTitleLabel = cell.viewWithTag(2) as! UILabel
@@ -87,6 +89,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }else{
             cell = tableView.dequeueReusableCellWithIdentifier("videoResultCell", forIndexPath: indexPath)
+            cell.backgroundColor = UIColor(red:0.95, green:0.91, blue:0.86, alpha:1.0)
             
             let videoThumbnailImageView = cell.viewWithTag(1) as! UIImageView
             let videoTitleLabel = cell.viewWithTag(2) as! UILabel

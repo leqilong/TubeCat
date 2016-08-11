@@ -174,6 +174,7 @@ class VideosTableViewController: CoreDataTableViewController{
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("videoCell", forIndexPath: indexPath) as! VideoTableViewCell
+        cell.backgroundColor = UIColor(red:0.95, green:0.91, blue:0.86, alpha:1.0)
         let vid = fetchedResultsController.objectAtIndexPath(indexPath) as! Video
         cell.thumbnailImageView.image = nil
         cell.thumbnailImageView.backgroundColor = UIColor.clearColor()

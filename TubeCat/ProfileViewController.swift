@@ -24,6 +24,7 @@ class ProfileViewController: UIViewController {
     }
     
     func configure(){
+        self.navigationController!.navigationBar.barTintColor = UIColor(red:0.88, green:0.38, blue:0.21, alpha:1.0)
         view.layer.contents = UIImage(named: "TubeCat.scnassets/BackgroundImage/ProfileBackground.jpg")?.CGImage
         let image = UIImage(data: (dataSource.user?.imageData)!)
         profileImageView.image = image!.rounded

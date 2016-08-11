@@ -99,7 +99,7 @@ class CatBoxViewController: UIViewController, UIPopoverPresentationControllerDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationController!.navigationBar.barTintColor = UIColor(red:0.88, green:0.38, blue:0.21, alpha:1.0)
         setupView()
         setupScene()
         setupCamera()

@@ -99,6 +99,7 @@ class FavoritesTableViewController: CoreDataTableViewController{
     }
     
     func configure(){
+        self.navigationController!.navigationBar.barTintColor = UIColor(red:0.88, green:0.38, blue:0.21, alpha:1.0)
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
     }
     
@@ -170,6 +171,7 @@ class FavoritesTableViewController: CoreDataTableViewController{
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("favoriteCell", forIndexPath: indexPath) as! FavoritesTableViewCell
+        cell.backgroundColor = UIColor(red:0.95, green:0.91, blue:0.86, alpha:1.0)
         let vid = fetchedResultsController.objectAtIndexPath(indexPath) as! Video
         cell.thumbnailImageView.image = nil
         cell.thumbnailImageView.backgroundColor = UIColor.clearColor()
